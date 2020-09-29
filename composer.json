@@ -1,6 +1,6 @@
 {
     "name": "mindpowered/englishauction",
-    "version": "0.0.16",
+    "version": "0.0.17",
     "description": "EnglishAuction",
     "license": "CPAL-1.0",
     "autoload": {
