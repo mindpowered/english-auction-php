@@ -27,70 +27,54 @@ class EnglishAuctionPhpWrapper
  * @param unknown_type $end end time of auction
  * @param unknown_type $startingPrice starting price of auction
  * @param unknown_type $reservePrice reserve price for the auction (0 = none)
+ * @param unknown_type $priceIncrement price increments for bids in the auction
  * @return ...
  */
-public function Create($start, $end, $startingPrice, $reservePrice)
+public function Create($start, $end, $startingPrice, $reservePrice, $priceIncrement)
 {
 	$bus = MagLevPhp::getInstance('default');
-	$args = [$start, $end, $startingPrice, $reservePrice];
+	$args = [$start, $end, $startingPrice, $reservePrice, $priceIncrement];
 	$ret = $bus->call('EnglishAuction.Create', $args);
 	return $ret;
 }
 
 /**
- * Bid in an auction
- * @param unknown_type $auctionId auction id to bid in
- * @param unknown_type $userId user id that's bidding
- * @param unknown_type $price bid price
+ * Get the start of an auction
+ * Will return a timestamp in milliseconds
+ * @param unknown_type $auctionId auction id
  * @return ...
  */
-public function Bid($auctionId, $userId, $price)
+public function GetStart($auctionId)
 {
 	$bus = MagLevPhp::getInstance('default');
-	$args = [$auctionId, $userId, $price];
-	$ret = $bus->call('EnglishAuction.Bid', $args);
+	$args = [$auctionId];
+	$ret = $bus->call('EnglishAuction.GetStart', $args);
 	return $ret;
 }
 
 /**
- * Automatically bid against others in an auction (up to the specified amount)
- * @param unknown_type $auctionId auction id to bid in
- * @param unknown_type $userId user id that's bidding
- * @param unknown_type $price bid price
+ * Check if auction has ended
+ * @param unknown_type $auctionId auction id
  * @return ...
  */
-public function AutoBid($auctionId, $userId, $price)
+public function GetEnd($auctionId)
 {
 	$bus = MagLevPhp::getInstance('default');
-	$args = [$auctionId, $userId, $price];
-	$ret = $bus->call('EnglishAuction.AutoBid', $args);
+	$args = [$auctionId];
+	$ret = $bus->call('EnglishAuction.GetEnd', $args);
 	return $ret;
 }
 
 /**
- * Force an auction to close and specify the winning bid.
- * @param unknown_type $auctionId auction id to bid in
- * @param unknown_type $userId user id that's bidding
- * @param unknown_type $price bid price
+ * Check if an auction has started yet
+ * @param unknown_type $auctionId auction id
  * @return ...
  */
-public function ForceClose($auctionId, $userId, $price)
+public function HasStarted($auctionId)
 {
 	$bus = MagLevPhp::getInstance('default');
-	$args = [$auctionId, $userId, $price];
-	$ret = $bus->call('EnglishAuction.ForceClose', $args);
-	return $ret;
-}
-
-/**
- * TBD
- * @return void
- */
-public function Status()
-{
-	$bus = MagLevPhp::getInstance('default');
-	$args = [];
-	$ret = $bus->call('EnglishAuction.Status', $args);
+	$args = [$auctionId];
+	$ret = $bus->call('EnglishAuction.HasStarted', $args);
 	return $ret;
 }
 

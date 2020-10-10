@@ -35,12 +35,110 @@ class EnglishAuction {
 	 * @return void
 	 */
 	public function registerMyMethods () {
-		#/src/englishauction/EnglishAuction.hx:20: lines 20-23
+		#/src/englishauction/EnglishAuction.hx:20: characters 3-25
+		$bus = $this->maglev;
+		#/src/englishauction/EnglishAuction.hx:21: lines 21-24
 		$this->maglev->register("EnglishAuction.Create", function ($args) {
-			#/src/englishauction/EnglishAuction.hx:21: characters 13-39
+			#/src/englishauction/EnglishAuction.hx:22: characters 13-39
 			$ret = "idhere";
-			#/src/englishauction/EnglishAuction.hx:22: characters 13-23
+			#/src/englishauction/EnglishAuction.hx:23: characters 13-23
 			return $ret;
+		});
+		#/src/englishauction/EnglishAuction.hx:25: lines 25-35
+		$this->maglev->register("EnglishAuction.GetStart", function ($args) use (&$bus) {
+			#/src/englishauction/EnglishAuction.hx:26: characters 4-28
+			$id = ($args->arr[0] ?? null);
+			#/src/englishauction/EnglishAuction.hx:27: characters 4-93
+			$auction = $bus->call("Persistence.Get", \Array_hx::wrap([
+				"Auction",
+				"FindById",
+				\Array_hx::wrap([$id]),
+			]));
+			#/src/englishauction/EnglishAuction.hx:28: characters 4-24
+			$start = 0;
+			#/src/englishauction/EnglishAuction.hx:29: lines 29-33
+			if (is_string(($auction->data["start"] ?? null))) {
+				#/src/englishauction/EnglishAuction.hx:30: characters 5-56
+				$start = \Date::fromString(($auction->data["start"] ?? null))->getTime();
+			} else {
+				#/src/englishauction/EnglishAuction.hx:32: characters 5-29
+				$start = ($auction->data["start"] ?? null);
+			}
+			#/src/englishauction/EnglishAuction.hx:34: characters 4-16
+			return $start;
+		});
+		#/src/englishauction/EnglishAuction.hx:36: lines 36-46
+		$this->maglev->register("EnglishAuction.GetEnd", function ($args) use (&$bus) {
+			#/src/englishauction/EnglishAuction.hx:37: characters 4-28
+			$id = ($args->arr[0] ?? null);
+			#/src/englishauction/EnglishAuction.hx:38: characters 4-93
+			$auction = $bus->call("Persistence.Get", \Array_hx::wrap([
+				"Auction",
+				"FindById",
+				\Array_hx::wrap([$id]),
+			]));
+			#/src/englishauction/EnglishAuction.hx:39: characters 4-22
+			$end = 0;
+			#/src/englishauction/EnglishAuction.hx:40: lines 40-44
+			if (is_string(($auction->data["end"] ?? null))) {
+				#/src/englishauction/EnglishAuction.hx:41: characters 5-52
+				$end = \Date::fromString(($auction->data["end"] ?? null))->getTime();
+			} else {
+				#/src/englishauction/EnglishAuction.hx:43: characters 5-25
+				$end = ($auction->data["end"] ?? null);
+			}
+			#/src/englishauction/EnglishAuction.hx:45: characters 4-14
+			return $end;
+		});
+		#/src/englishauction/EnglishAuction.hx:47: lines 47-58
+		$this->maglev->register("EnglishAuction.HasStarted", function ($args) use (&$bus) {
+			#/src/englishauction/EnglishAuction.hx:48: characters 4-28
+			$id = ($args->arr[0] ?? null);
+			#/src/englishauction/EnglishAuction.hx:49: characters 4-93
+			$auction = $bus->call("Persistence.Get", \Array_hx::wrap([
+				"Auction",
+				"FindById",
+				\Array_hx::wrap([$id]),
+			]));
+			#/src/englishauction/EnglishAuction.hx:50: characters 4-24
+			$start = 0;
+			#/src/englishauction/EnglishAuction.hx:51: lines 51-55
+			if (is_string(($auction->data["start"] ?? null))) {
+				#/src/englishauction/EnglishAuction.hx:52: characters 5-56
+				$start = \Date::fromString(($auction->data["start"] ?? null))->getTime();
+			} else {
+				#/src/englishauction/EnglishAuction.hx:54: characters 5-29
+				$start = ($auction->data["start"] ?? null);
+			}
+			#/src/englishauction/EnglishAuction.hx:56: characters 4-41
+			$now = \Date::now()->getTime();
+			#/src/englishauction/EnglishAuction.hx:57: characters 4-23
+			return $start <= $now;
+		});
+		#/src/englishauction/EnglishAuction.hx:59: lines 59-70
+		$this->maglev->register("EnglishAuction.HasEnded", function ($args) use (&$bus) {
+			#/src/englishauction/EnglishAuction.hx:60: characters 4-28
+			$id = ($args->arr[0] ?? null);
+			#/src/englishauction/EnglishAuction.hx:61: characters 4-93
+			$auction = $bus->call("Persistence.Get", \Array_hx::wrap([
+				"Auction",
+				"FindById",
+				\Array_hx::wrap([$id]),
+			]));
+			#/src/englishauction/EnglishAuction.hx:62: characters 4-22
+			$end = 0;
+			#/src/englishauction/EnglishAuction.hx:63: lines 63-67
+			if (is_string(($auction->data["end"] ?? null))) {
+				#/src/englishauction/EnglishAuction.hx:64: characters 5-52
+				$end = \Date::fromString(($auction->data["end"] ?? null))->getTime();
+			} else {
+				#/src/englishauction/EnglishAuction.hx:66: characters 5-25
+				$end = ($auction->data["end"] ?? null);
+			}
+			#/src/englishauction/EnglishAuction.hx:68: characters 4-41
+			$now = \Date::now()->getTime();
+			#/src/englishauction/EnglishAuction.hx:69: characters 4-20
+			return $now > $end;
 		});
 	}
 
