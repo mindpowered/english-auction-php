@@ -78,4 +78,59 @@ public function HasStarted($auctionId)
 	return $ret;
 }
 
+/**
+ * Create a bid in an auction
+ * @param unknown_type $auctionId auction id
+ * @param unknown_type $userId user id
+ * @param unknown_type $price price bud
+ * @return void
+ */
+public function Bid($auctionId, $userId, $price)
+{
+	$bus = MagLevPhp::getInstance('default');
+	$args = [$auctionId, $userId, $price];
+	$ret = $bus->call('EnglishAuction.Bid', $args);
+	return $ret;
+}
+
+/**
+ * Get the highest bidder in an auction
+ * @param unknown_type $auctionId auction id
+ * @return ...
+ */
+public function GetHighestBidder($auctionId)
+{
+	$bus = MagLevPhp::getInstance('default');
+	$args = [$auctionId];
+	$ret = $bus->call('EnglishAuction.GetHighestBidder', $args);
+	return $ret;
+}
+
+/**
+ * Get the highest bids in an auction
+ * @param unknown_type $auctionId auction id
+ * @param unknown_type $numBids max number of highest bids to return
+ * @return ...
+ */
+public function GetHighestBids($auctionId, $numBids)
+{
+	$bus = MagLevPhp::getInstance('default');
+	$args = [$auctionId, $numBids];
+	$ret = $bus->call('EnglishAuction.GetHighestBids', $args);
+	return $ret;
+}
+
+/**
+ * Get the number of bids in an auction
+ * @param unknown_type $auctionId auction id
+ * @return ...
+ */
+public function GetNumberOfBids($auctionId)
+{
+	$bus = MagLevPhp::getInstance('default');
+	$args = [$auctionId];
+	$ret = $bus->call('EnglishAuction.GetNumberOfBids', $args);
+	return $ret;
+}
+
 }
