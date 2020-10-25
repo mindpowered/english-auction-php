@@ -133,4 +133,17 @@ public function GetNumberOfBids($auctionId)
 	return $ret;
 }
 
+/**
+ * Get the price increment for the specified auction
+ * @param unknown_type $auctionId auction id
+ * @return ...
+ */
+public function GetPriceIncrement($auctionId)
+{
+	$bus = MagLevPhp::getInstance('default');
+	$args = [$auctionId];
+	$ret = $bus->call('EnglishAuction.GetPriceIncrement', $args);
+	return $ret;
+}
+
 }
