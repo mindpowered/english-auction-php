@@ -146,4 +146,57 @@ public function GetPriceIncrement($auctionId)
 	return $ret;
 }
 
+/**
+ * Get the reserve price for the specified auction
+ * @param unknown_type $auctionId auction id
+ * @return ...
+ */
+public function GetReservePrice($auctionId)
+{
+	$bus = MagLevPhp::getInstance('default');
+	$args = [$auctionId];
+	$ret = $bus->call('EnglishAuction.GetReservePrice', $args);
+	return $ret;
+}
+
+/**
+ * Get the starting price for the specified auction
+ * @param unknown_type $auctionId auction id
+ * @return ...
+ */
+public function GetStartingPrice($auctionId)
+{
+	$bus = MagLevPhp::getInstance('default');
+	$args = [$auctionId];
+	$ret = $bus->call('EnglishAuction.GetStartingPrice', $args);
+	return $ret;
+}
+
+/**
+ * Get the time remaining for the specified auction
+ * @param unknown_type $auctionId auction id
+ * @param unknown_type $now current unix timestamp
+ * @return ...
+ */
+public function CalcTimeRemaining($auctionId, $now)
+{
+	$bus = MagLevPhp::getInstance('default');
+	$args = [$auctionId, $now];
+	$ret = $bus->call('EnglishAuction.CalcTimeRemaining', $args);
+	return $ret;
+}
+
+/**
+ * Get the minimum next bid for the specified auction
+ * @param unknown_type $auctionId auction id
+ * @return ...
+ */
+public function CalcMinimumBid($auctionId)
+{
+	$bus = MagLevPhp::getInstance('default');
+	$args = [$auctionId];
+	$ret = $bus->call('EnglishAuction.CalcMinimumBid', $args);
+	return $ret;
+}
+
 }
