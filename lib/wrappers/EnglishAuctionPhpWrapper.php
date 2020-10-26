@@ -199,4 +199,22 @@ public function CalcMinimumBid($auctionId)
 	return $ret;
 }
 
+/**
+ * Get a list of auctions based on their end time
+ * @param unknown_type $endfrom end from
+ * @param unknown_type $endto end to
+ * @param unknown_type $page 
+ * @param unknown_type $perpage number of auctions per page
+ * @param unknown_type $sort field to sort by
+ * @param unknown_type $asc ascending (true) or descending (false)
+ * @return ...
+ */
+public function GetAuctionsEnding($endfrom, $endto, $page, $perpage, $sort, $asc)
+{
+	$bus = MagLevPhp::getInstance('default');
+	$args = [$endfrom, $endto, $page, $perpage, $sort, $asc];
+	$ret = $bus->call('EnglishAuction.GetAuctionsEnding', $args);
+	return $ret;
+}
+
 }
