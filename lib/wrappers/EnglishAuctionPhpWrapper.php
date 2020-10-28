@@ -217,4 +217,38 @@ public function GetAuctionsEnding($endfrom, $endto, $page, $perpage, $sort, $asc
 	return $ret;
 }
 
+/**
+ * Get a list of auctions based on their start time
+ * @param unknown_type $startfrom start from
+ * @param unknown_type $startto start to
+ * @param unknown_type $page 
+ * @param unknown_type $perpage number of auctions per page
+ * @param unknown_type $sort field to sort by
+ * @param unknown_type $asc ascending (true) or descending (false)
+ * @return ...
+ */
+public function GetAuctionsStarting($startfrom, $startto, $page, $perpage, $sort, $asc)
+{
+	$bus = MagLevPhp::getInstance('default');
+	$args = [$startfrom, $startto, $page, $perpage, $sort, $asc];
+	$ret = $bus->call('EnglishAuction.GetAuctionsStarting', $args);
+	return $ret;
+}
+
+/**
+ * Get a list of currently running auctions
+ * @param unknown_type $page 
+ * @param unknown_type $perpage number of auctions per page
+ * @param unknown_type $sort field to sort by
+ * @param unknown_type $asc ascending (true) or descending (false)
+ * @return ...
+ */
+public function GetOpenAuctions($page, $perpage, $sort, $asc)
+{
+	$bus = MagLevPhp::getInstance('default');
+	$args = [$page, $perpage, $sort, $asc];
+	$ret = $bus->call('EnglishAuction.GetOpenAuctions', $args);
+	return $ret;
+}
+
 }

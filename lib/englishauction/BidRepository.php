@@ -10,6 +10,7 @@ use \maglev\MagLevString;
 use \php\Boot;
 use \maglev\MagLev;
 use \maglev\MagLevArray;
+use \maglev\MagLevObject;
 
 class BidRepository {
 	/**
@@ -51,6 +52,64 @@ class BidRepository {
 	public function FindById ($bidId) {
 		#/src/englishauction/BidRepository.hx:27: characters 9-20
 		return null;
+	}
+
+	/**
+	 * @param string $auctionId
+	 * @param int $numBids
+	 * 
+	 * @return \Array_hx
+	 */
+	public function GetHighestBids ($auctionId, $numBids) {
+		#/src/englishauction/BidRepository.hx:44: characters 9-55
+		$myargs = MagLevArray::create();
+		#/src/englishauction/BidRepository.hx:45: characters 9-56
+		$myargs->push(MagLevString::fromString($auctionId));
+		#/src/englishauction/BidRepository.hx:46: characters 9-51
+		$myargs->push(MagLevNumber::fromInt($numBids));
+		#/src/englishauction/BidRepository.hx:47: characters 9-44
+		$myargs2 = MagLevArray::create();
+		#/src/englishauction/BidRepository.hx:48: characters 9-68
+		$myargs2->push(MagLevString::fromString("EnglishAuction.Bid"));
+		#/src/englishauction/BidRepository.hx:49: characters 9-78
+		$myargs2->push(MagLevString::fromString("FindByHighestPriceForAuction"));
+		#/src/englishauction/BidRepository.hx:50: characters 9-29
+		$myargs2->push($myargs);
+		#/src/englishauction/BidRepository.hx:51: characters 9-69
+		$res = $this->bus->call("Persistence.Get", $myargs2);
+		#/src/englishauction/BidRepository.hx:52: characters 9-66
+		$arr = Boot::typedCast(Boot::getClass(MagLevArray::class), $res->getResult());
+		#/src/englishauction/BidRepository.hx:53: characters 9-58
+		$bids = new \Array_hx();
+		#/src/englishauction/BidRepository.hx:54: characters 9-19
+		$i = 0;
+		#/src/englishauction/BidRepository.hx:55: lines 55-68
+		while ($i < $arr->size()) {
+			#/src/englishauction/BidRepository.hx:56: characters 13-50
+			$model = new BidModel();
+			#/src/englishauction/BidRepository.hx:57: characters 13-57
+			$resobj = Boot::typedCast(Boot::getClass(MagLevObject::class), $arr->get($i));
+			#/src/englishauction/BidRepository.hx:58: characters 13-75
+			$model->id = (Boot::typedCast(Boot::getClass(MagLevString::class), $resobj->get("bidId")))->getString();
+			#/src/englishauction/BidRepository.hx:59: lines 59-63
+			if ($resobj->exists("auctionId")) {
+				#/src/englishauction/BidRepository.hx:60: characters 17-90
+				$model->auctionId = (Boot::typedCast(Boot::getClass(MagLevString::class), $resobj->get("auctionId")))->getString();
+			} else {
+				#/src/englishauction/BidRepository.hx:62: characters 17-44
+				$model->auctionId = $auctionId;
+			}
+			#/src/englishauction/BidRepository.hx:64: characters 13-80
+			$model->userId = (Boot::typedCast(Boot::getClass(MagLevString::class), $resobj->get("userId")))->getString();
+			#/src/englishauction/BidRepository.hx:65: characters 13-78
+			$model->amount = (Boot::typedCast(Boot::getClass(MagLevNumber::class), $resobj->get("price")))->getFloat();
+			#/src/englishauction/BidRepository.hx:66: characters 13-29
+			$bids->arr[$bids->length++] = $model;
+			#/src/englishauction/BidRepository.hx:67: characters 13-16
+			++$i;
+		}
+		#/src/englishauction/BidRepository.hx:69: characters 9-20
+		return $bids;
 	}
 
 	/**
