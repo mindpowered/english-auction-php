@@ -1,7 +1,11 @@
 <?php
 namespace mindpowered\wrappers;
 
+use \maglev\MagLev;
+
 use \maglev\MagLevPhp;
+
+use \persistence\Persistence;
 
 /**
  * EnglishAuctionPhpWrapper
@@ -20,7 +24,9 @@ use \maglev\MagLevPhp;
  * Also supports reserve price and automatic bidding.
  */
 class EnglishAuctionPhpWrapper
-{
+{	$bus = MagLevPhp::getInstance('englishauction');
+	$lib = EnglishAuction($bus);
+
 /**
  * Create a new auction
  * @param unknown_type $start start time of auction
@@ -32,9 +38,9 @@ class EnglishAuctionPhpWrapper
  */
 public function Create($start, $end, $startingPrice, $reservePrice, $priceIncrement)
 {
-	$bus = MagLevPhp::getInstance('default');
+	$pbus = MagLevPhp::getInstance('englishauction');
 	$args = [$start, $end, $startingPrice, $reservePrice, $priceIncrement];
-	$ret = $bus->call('EnglishAuction.Create', $args);
+	$ret = $pbus->call('EnglishAuction.Create', $args);
 	return $ret;
 }
 
@@ -46,9 +52,9 @@ public function Create($start, $end, $startingPrice, $reservePrice, $priceIncrem
  */
 public function GetStart($auctionId)
 {
-	$bus = MagLevPhp::getInstance('default');
+	$pbus = MagLevPhp::getInstance('englishauction');
 	$args = [$auctionId];
-	$ret = $bus->call('EnglishAuction.GetStart', $args);
+	$ret = $pbus->call('EnglishAuction.GetStart', $args);
 	return $ret;
 }
 
@@ -59,9 +65,9 @@ public function GetStart($auctionId)
  */
 public function GetEnd($auctionId)
 {
-	$bus = MagLevPhp::getInstance('default');
+	$pbus = MagLevPhp::getInstance('englishauction');
 	$args = [$auctionId];
-	$ret = $bus->call('EnglishAuction.GetEnd', $args);
+	$ret = $pbus->call('EnglishAuction.GetEnd', $args);
 	return $ret;
 }
 
@@ -72,9 +78,9 @@ public function GetEnd($auctionId)
  */
 public function HasStarted($auctionId)
 {
-	$bus = MagLevPhp::getInstance('default');
+	$pbus = MagLevPhp::getInstance('englishauction');
 	$args = [$auctionId];
-	$ret = $bus->call('EnglishAuction.HasStarted', $args);
+	$ret = $pbus->call('EnglishAuction.HasStarted', $args);
 	return $ret;
 }
 
@@ -87,9 +93,9 @@ public function HasStarted($auctionId)
  */
 public function Bid($auctionId, $userId, $price)
 {
-	$bus = MagLevPhp::getInstance('default');
+	$pbus = MagLevPhp::getInstance('englishauction');
 	$args = [$auctionId, $userId, $price];
-	$ret = $bus->call('EnglishAuction.Bid', $args);
+	$ret = $pbus->call('EnglishAuction.Bid', $args);
 	return $ret;
 }
 
@@ -100,9 +106,9 @@ public function Bid($auctionId, $userId, $price)
  */
 public function GetHighestBidder($auctionId)
 {
-	$bus = MagLevPhp::getInstance('default');
+	$pbus = MagLevPhp::getInstance('englishauction');
 	$args = [$auctionId];
-	$ret = $bus->call('EnglishAuction.GetHighestBidder', $args);
+	$ret = $pbus->call('EnglishAuction.GetHighestBidder', $args);
 	return $ret;
 }
 
@@ -114,9 +120,9 @@ public function GetHighestBidder($auctionId)
  */
 public function GetHighestBids($auctionId, $numBids)
 {
-	$bus = MagLevPhp::getInstance('default');
+	$pbus = MagLevPhp::getInstance('englishauction');
 	$args = [$auctionId, $numBids];
-	$ret = $bus->call('EnglishAuction.GetHighestBids', $args);
+	$ret = $pbus->call('EnglishAuction.GetHighestBids', $args);
 	return $ret;
 }
 
@@ -127,9 +133,9 @@ public function GetHighestBids($auctionId, $numBids)
  */
 public function GetNumberOfBids($auctionId)
 {
-	$bus = MagLevPhp::getInstance('default');
+	$pbus = MagLevPhp::getInstance('englishauction');
 	$args = [$auctionId];
-	$ret = $bus->call('EnglishAuction.GetNumberOfBids', $args);
+	$ret = $pbus->call('EnglishAuction.GetNumberOfBids', $args);
 	return $ret;
 }
 
@@ -140,9 +146,9 @@ public function GetNumberOfBids($auctionId)
  */
 public function GetPriceIncrement($auctionId)
 {
-	$bus = MagLevPhp::getInstance('default');
+	$pbus = MagLevPhp::getInstance('englishauction');
 	$args = [$auctionId];
-	$ret = $bus->call('EnglishAuction.GetPriceIncrement', $args);
+	$ret = $pbus->call('EnglishAuction.GetPriceIncrement', $args);
 	return $ret;
 }
 
@@ -153,9 +159,9 @@ public function GetPriceIncrement($auctionId)
  */
 public function GetReservePrice($auctionId)
 {
-	$bus = MagLevPhp::getInstance('default');
+	$pbus = MagLevPhp::getInstance('englishauction');
 	$args = [$auctionId];
-	$ret = $bus->call('EnglishAuction.GetReservePrice', $args);
+	$ret = $pbus->call('EnglishAuction.GetReservePrice', $args);
 	return $ret;
 }
 
@@ -166,9 +172,9 @@ public function GetReservePrice($auctionId)
  */
 public function GetStartingPrice($auctionId)
 {
-	$bus = MagLevPhp::getInstance('default');
+	$pbus = MagLevPhp::getInstance('englishauction');
 	$args = [$auctionId];
-	$ret = $bus->call('EnglishAuction.GetStartingPrice', $args);
+	$ret = $pbus->call('EnglishAuction.GetStartingPrice', $args);
 	return $ret;
 }
 
@@ -180,9 +186,9 @@ public function GetStartingPrice($auctionId)
  */
 public function CalcTimeRemaining($auctionId, $now)
 {
-	$bus = MagLevPhp::getInstance('default');
+	$pbus = MagLevPhp::getInstance('englishauction');
 	$args = [$auctionId, $now];
-	$ret = $bus->call('EnglishAuction.CalcTimeRemaining', $args);
+	$ret = $pbus->call('EnglishAuction.CalcTimeRemaining', $args);
 	return $ret;
 }
 
@@ -193,9 +199,9 @@ public function CalcTimeRemaining($auctionId, $now)
  */
 public function CalcMinimumBid($auctionId)
 {
-	$bus = MagLevPhp::getInstance('default');
+	$pbus = MagLevPhp::getInstance('englishauction');
 	$args = [$auctionId];
-	$ret = $bus->call('EnglishAuction.CalcMinimumBid', $args);
+	$ret = $pbus->call('EnglishAuction.CalcMinimumBid', $args);
 	return $ret;
 }
 
@@ -211,9 +217,9 @@ public function CalcMinimumBid($auctionId)
  */
 public function GetAuctionsEnding($endfrom, $endto, $page, $perpage, $sort, $asc)
 {
-	$bus = MagLevPhp::getInstance('default');
+	$pbus = MagLevPhp::getInstance('englishauction');
 	$args = [$endfrom, $endto, $page, $perpage, $sort, $asc];
-	$ret = $bus->call('EnglishAuction.GetAuctionsEnding', $args);
+	$ret = $pbus->call('EnglishAuction.GetAuctionsEnding', $args);
 	return $ret;
 }
 
@@ -229,9 +235,9 @@ public function GetAuctionsEnding($endfrom, $endto, $page, $perpage, $sort, $asc
  */
 public function GetAuctionsStarting($startfrom, $startto, $page, $perpage, $sort, $asc)
 {
-	$bus = MagLevPhp::getInstance('default');
+	$pbus = MagLevPhp::getInstance('englishauction');
 	$args = [$startfrom, $startto, $page, $perpage, $sort, $asc];
-	$ret = $bus->call('EnglishAuction.GetAuctionsStarting', $args);
+	$ret = $pbus->call('EnglishAuction.GetAuctionsStarting', $args);
 	return $ret;
 }
 
@@ -245,9 +251,9 @@ public function GetAuctionsStarting($startfrom, $startto, $page, $perpage, $sort
  */
 public function GetOpenAuctions($page, $perpage, $sort, $asc)
 {
-	$bus = MagLevPhp::getInstance('default');
+	$pbus = MagLevPhp::getInstance('englishauction');
 	$args = [$page, $perpage, $sort, $asc];
-	$ret = $bus->call('EnglishAuction.GetOpenAuctions', $args);
+	$ret = $pbus->call('EnglishAuction.GetOpenAuctions', $args);
 	return $ret;
 }
 
