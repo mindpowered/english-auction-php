@@ -258,4 +258,63 @@ class EnglishAuction
 		return $ret;
 	}
 
+	/**
+	 * Set up a method to create a new auction
+	 * @param unknown_type $strategyMethod 
+	 * @return void
+	 */
+	public function SetupCreateNewAuction($strategyMethod)
+	{
+		$phpbus = MagLevPhp::getInstance('englishauction');
+		$recordType = "EnglishAuction.Auction"
+		$operationName = "CreateNew"
+		$args = [$recordType, $operationName, $strategyMethod];
+		$phpbus->call('Persistence.AddMutator', $args);
+	}
+
+	/**
+	 * Set up a query method to find auctions by id
+	 * @param unknown_type $strategyMethod 
+	 * @return ...
+	 */
+	public function SetupFindAuctionById($strategyMethod)
+	{
+		$phpbus = MagLevPhp::getInstance('englishauction');
+		$recordType = "EnglishAuction.Auction"
+		$operationName = "FindById"
+		$args = [$recordType, $operationName, $strategyMethod];
+		$ret = $phpbus->call('EnglishAuction.SetupFindAuctionById', $args);
+		return $ret;
+	}
+
+	/**
+	 * Set up a query method to find auctions by their start time
+	 * @param unknown_type $strategyMethod 
+	 * @return ...
+	 */
+	public function SetupFindAuctionStarting($strategyMethod)
+	{
+		$phpbus = MagLevPhp::getInstance('englishauction');
+		$recordType = "EnglishAuction.Auction"
+		$operationName = "FindStarting"
+		$args = [$recordType, $operationName, $strategyMethod];
+		$ret = $phpbus->call('EnglishAuction.SetupFindAuctionStarting', $args);
+		return $ret;
+	}
+
+	/**
+	 * Set up a query method to find auctions by their end time
+	 * @param unknown_type $strategyMethod 
+	 * @return ...
+	 */
+	public function SetupFindAuctionEnd($strategyMethod)
+	{
+		$phpbus = MagLevPhp::getInstance('englishauction');
+		$recordType = "EnglishAuction.Auction"
+		$operationName = "FindEnding"
+		$args = [$recordType, $operationName, $strategyMethod];
+		$ret = $phpbus->call('EnglishAuction.SetupFindAuctionEnd', $args);
+		return $ret;
+	}
+
 }
