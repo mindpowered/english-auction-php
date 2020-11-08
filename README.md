@@ -5,23 +5,43 @@ englishauction
 Contents
 ========
 
-* [englishauction library](#englishauction-library)
-	* [Licensing Options](#licensing-options)
-	* [Support](#support)
+* [About](#about)
+* [Requirements](#requirements)
+* [Installation](#installation)
+* [Usage](#usage)
+* [Configuration](#configuration)
+* [Licensing](#licensing)
+* [Support](#support)
 
-# englishauction library
-  
-Please read the [documentation][docs]
-## Licensing Options
+# About
+A Timed Auction library starting at a low price and increasing until the auction ends.
+
+# Requirements
+- php >= 7
+- php `mbstring` extension
+- php `xml` extension
 
 
+Third-party dependencies may have additional requirements.
+
+# Installation
+composer ...
+
+
+# Usage
+Examples to come
+
+# Configuration
+You must configure the storage and retrieval of auctions and bids.
+
+# Licensing
 Additional [licensing options][licensing] are available.
-## Support
 
-
-For bugfixes, please raise an issue in the [Issue Tracker][bugs].
+# Support
+For bug fixes, please raise an issue in the [Issue Tracker][bugs].
 
 For feature requests, and general support, please [Contact us][contact].
+
 
 
 [bugs]: https://github.com/mindpowered/english-auction-php/issues
