@@ -259,61 +259,122 @@ class EnglishAuction
 	}
 
 	/**
-	 * Set up a method to create a new auction
+	 * Provide a callback used to store new auctions (eg. in a database) and return the ID of the new auction.
 	 * @param unknown_type $strategyMethod 
-	 * @return void
+	 * @return ...
 	 */
-	public function SetupCreateNewAuction($strategyMethod)
+	public function SetupNewAuctionQueryCallback($strategyMethod)
 	{
 		$phpbus = MagLevPhp::getInstance('englishauction');
 		$recordType = "EnglishAuction.Auction"
 		$operationName = "CreateNew"
 		$args = [$recordType, $operationName, $strategyMethod];
-		$phpbus->call('Persistence.AddMutator', $args);
+		$ret = $phpbus->call('EnglishAuction.SetupNewAuctionQueryCallback', $args);
+		return $ret;
 	}
 
 	/**
-	 * Set up a query method to find auctions by id
+	 * Provide a callback used to retrieve auctions (eg. from a database) by ID
 	 * @param unknown_type $strategyMethod 
 	 * @return ...
 	 */
-	public function SetupFindAuctionById($strategyMethod)
+	public function SetupFindAuctionByIdQueryCallback($strategyMethod)
 	{
 		$phpbus = MagLevPhp::getInstance('englishauction');
 		$recordType = "EnglishAuction.Auction"
 		$operationName = "FindById"
 		$args = [$recordType, $operationName, $strategyMethod];
-		$ret = $phpbus->call('EnglishAuction.SetupFindAuctionById', $args);
+		$ret = $phpbus->call('EnglishAuction.SetupFindAuctionByIdQueryCallback', $args);
 		return $ret;
 	}
 
 	/**
-	 * Set up a query method to find auctions by their start time
+	 * Provide a callback used to retrieve auctions (eg. from a database) by their start date/time
 	 * @param unknown_type $strategyMethod 
 	 * @return ...
 	 */
-	public function SetupFindAuctionStarting($strategyMethod)
+	public function SetupFindAuctionsStartingQueryCallback($strategyMethod)
 	{
 		$phpbus = MagLevPhp::getInstance('englishauction');
 		$recordType = "EnglishAuction.Auction"
 		$operationName = "FindStarting"
 		$args = [$recordType, $operationName, $strategyMethod];
-		$ret = $phpbus->call('EnglishAuction.SetupFindAuctionStarting', $args);
+		$ret = $phpbus->call('EnglishAuction.SetupFindAuctionsStartingQueryCallback', $args);
 		return $ret;
 	}
 
 	/**
-	 * Set up a query method to find auctions by their end time
+	 * Provide a callback used to retrieve auctions (eg. from a database) by their end data/time
 	 * @param unknown_type $strategyMethod 
 	 * @return ...
 	 */
-	public function SetupFindAuctionEnd($strategyMethod)
+	public function SetupFindAuctionsEndingQueryCallback($strategyMethod)
 	{
 		$phpbus = MagLevPhp::getInstance('englishauction');
 		$recordType = "EnglishAuction.Auction"
 		$operationName = "FindEnding"
 		$args = [$recordType, $operationName, $strategyMethod];
-		$ret = $phpbus->call('EnglishAuction.SetupFindAuctionEnd', $args);
+		$ret = $phpbus->call('EnglishAuction.SetupFindAuctionsEndingQueryCallback', $args);
+		return $ret;
+	}
+
+	/**
+	 * Provide a callback used to retrieve open auctions (eg. from a database)
+	 * @param unknown_type $strategyMethod 
+	 * @return ...
+	 */
+	public function SetupFindOpenAuctionsQueryCallback($strategyMethod)
+	{
+		$phpbus = MagLevPhp::getInstance('englishauction');
+		$recordType = "EnglishAuction.Auction"
+		$operationName = "FindOpen"
+		$args = [$recordType, $operationName, $strategyMethod];
+		$ret = $phpbus->call('EnglishAuction.SetupFindOpenAuctionsQueryCallback', $args);
+		return $ret;
+	}
+
+	/**
+	 * Provide a callback used to count the number of bids for an auction (eg. in a database)
+	 * @param unknown_type $strategyMethod 
+	 * @return ...
+	 */
+	public function SetupCountBidsQueryCallback($strategyMethod)
+	{
+		$phpbus = MagLevPhp::getInstance('englishauction');
+		$recordType = "EnglishAuction.Bid"
+		$operationName = "CountForAuction"
+		$args = [$recordType, $operationName, $strategyMethod];
+		$ret = $phpbus->call('EnglishAuction.SetupCountBidsQueryCallback', $args);
+		return $ret;
+	}
+
+	/**
+	 * Provide a callback used to retrieve (eg. from a database) the highest bids for an auction
+	 * @param unknown_type $strategyMethod 
+	 * @return ...
+	 */
+	public function SetupHighestBidsQueryCallback($strategyMethod)
+	{
+		$phpbus = MagLevPhp::getInstance('englishauction');
+		$recordType = "EnglishAuction.Bid"
+		$operationName = "FindByHighestPriceForAuction"
+		$args = [$recordType, $operationName, $strategyMethod];
+		$ret = $phpbus->call('EnglishAuction.SetupHighestBidsQueryCallback', $args);
+		return $ret;
+	}
+
+	/**
+	 * Provide a callback used to store new bids (eg. in a database) and return the ID of the new bid.
+	 * @param unknown_type $strategyMethod 
+	 * @return ...
+	 */
+	public function SetupNewBidQueryCallback($strategyMethod)
+	{
+		$phpbus = MagLevPhp::getInstance('englishauction');
+		$recordType = "EnglishAuction.Bid"
+		$operationName = "New"
+		$args = [$recordType, $operationName, $strategyMethod];
+		$ret = $phpbus->call('EnglishAuction.SetupNewBidQueryCallback', $args);
 		return $ret;
 	}
 

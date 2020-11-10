@@ -8,8 +8,8 @@ Contents
 * [About](#about)
 * [Requirements](#requirements)
 * [Installation](#installation)
-* [Usage](#usage)
 * [Configuration](#configuration)
+* [Usage](#usage)
 * [Licensing](#licensing)
 * [Support](#support)
 
@@ -28,11 +28,14 @@ Third-party dependencies may have additional requirements.
 composer ...
 
 
-# Usage
-Examples to come
-
 # Configuration
 You must configure the storage and retrieval of auctions and bids.
+
+# Usage
+You are using php
+
+
+More examples to come
 
 # Licensing
 Additional [licensing options][licensing] are available.
