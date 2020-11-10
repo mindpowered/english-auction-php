@@ -1,5 +1,5 @@
 <?php
-namespace mindpowered;
+namespace mindpowered\englishauction;
 
 use \maglev\MagLev;
 use \maglev\MagLevPhp;

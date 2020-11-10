@@ -1,13 +1,13 @@
 {
     "name": "mindpowered/englishauction",
-    "version": "0.0.41",
+    "version": "0.0.42",
     "description": "EnglishAuction",
     "license": "CPAL-1.0",
     "autoload": {
         "psr-4": {
             "haxe\\": "lib/haxe/",
             "englishauction\\": "lib/englishauction/",
-            "mindpowered\\wrappers\\": "lib/wrappers/",
+            "mindpowered\\englishauction\\": "lib/wrappers/",
             "php\\": "lib/php/",
             "": "lib/"
         }
