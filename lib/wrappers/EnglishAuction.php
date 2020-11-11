@@ -3,7 +3,7 @@ namespace mindpowered\englishauction;
 
 use \maglev\MagLev;
 use \maglev\MagLevPhp;
-use \englishauction\EnglishAuction;
+use \englishauction\EnglishAuction as EnglishAuction_SOT;
 use \persistence\Persistence;
 
 /**
@@ -25,7 +25,7 @@ class EnglishAuction
 	 */
 	function __construct() {
 		$bus = MagLev::getInstance('englishauction');
-		$lib = new EnglishAuction($bus);
+		$lib = new EnglishAuction_SOT($bus);
 		$persistence = new Persistence($bus);
 	}
 
