@@ -3,7 +3,7 @@ namespace mindpowered\englishauction;
 
 use \maglev\MagLev;
 use \maglev\MagLevPhp;
-use \englishauction\EnglishAuction as EnglishAuction_SOT;
+use \englishauction\EnglishAuction as EnglishAuction_Library;
 use \persistence\Persistence;
 
 /**
@@ -25,7 +25,7 @@ class EnglishAuction
 	 */
 	function __construct() {
 		$bus = MagLev::getInstance('englishauction');
-		$lib = new EnglishAuction_SOT($bus);
+		$lib = new EnglishAuction_Library($bus);
 		$persistence = new Persistence($bus);
 	}
 
@@ -266,10 +266,10 @@ class EnglishAuction
 	public function SetupNewAuctionQueryCallback($strategyMethod)
 	{
 		$phpbus = MagLevPhp::getInstance('englishauction');
-		$recordType = "EnglishAuction.Auction"
-		$operationName = "CreateNew"
+		$recordType = "EnglishAuction.Auction";
+		$operationName = "CreateNew";
 		$args = [$recordType, $operationName, $strategyMethod];
-		$ret = $phpbus->call('EnglishAuction.SetupNewAuctionQueryCallback', $args);
+		$ret = $phpbus->call('Persistence.AddMutator', $args);
 		return $ret;
 	}
 
@@ -281,10 +281,10 @@ class EnglishAuction
 	public function SetupFindAuctionByIdQueryCallback($strategyMethod)
 	{
 		$phpbus = MagLevPhp::getInstance('englishauction');
-		$recordType = "EnglishAuction.Auction"
-		$operationName = "FindById"
+		$recordType = "EnglishAuction.Auction";
+		$operationName = "FindById";
 		$args = [$recordType, $operationName, $strategyMethod];
-		$ret = $phpbus->call('EnglishAuction.SetupFindAuctionByIdQueryCallback', $args);
+		$ret = $phpbus->call('Persistence.AddGetter', $args);
 		return $ret;
 	}
 
@@ -296,10 +296,10 @@ class EnglishAuction
 	public function SetupFindAuctionsStartingQueryCallback($strategyMethod)
 	{
 		$phpbus = MagLevPhp::getInstance('englishauction');
-		$recordType = "EnglishAuction.Auction"
-		$operationName = "FindStarting"
+		$recordType = "EnglishAuction.Auction";
+		$operationName = "FindStarting";
 		$args = [$recordType, $operationName, $strategyMethod];
-		$ret = $phpbus->call('EnglishAuction.SetupFindAuctionsStartingQueryCallback', $args);
+		$ret = $phpbus->call('Persistence.AddGetter', $args);
 		return $ret;
 	}
 
@@ -311,10 +311,10 @@ class EnglishAuction
 	public function SetupFindAuctionsEndingQueryCallback($strategyMethod)
 	{
 		$phpbus = MagLevPhp::getInstance('englishauction');
-		$recordType = "EnglishAuction.Auction"
-		$operationName = "FindEnding"
+		$recordType = "EnglishAuction.Auction";
+		$operationName = "FindEnding";
 		$args = [$recordType, $operationName, $strategyMethod];
-		$ret = $phpbus->call('EnglishAuction.SetupFindAuctionsEndingQueryCallback', $args);
+		$ret = $phpbus->call('Persistence.AddGetter', $args);
 		return $ret;
 	}
 
@@ -326,10 +326,10 @@ class EnglishAuction
 	public function SetupFindOpenAuctionsQueryCallback($strategyMethod)
 	{
 		$phpbus = MagLevPhp::getInstance('englishauction');
-		$recordType = "EnglishAuction.Auction"
-		$operationName = "FindOpen"
+		$recordType = "EnglishAuction.Auction";
+		$operationName = "FindOpen";
 		$args = [$recordType, $operationName, $strategyMethod];
-		$ret = $phpbus->call('EnglishAuction.SetupFindOpenAuctionsQueryCallback', $args);
+		$ret = $phpbus->call('Persistence.AddGetter', $args);
 		return $ret;
 	}
 
@@ -341,10 +341,10 @@ class EnglishAuction
 	public function SetupCountBidsQueryCallback($strategyMethod)
 	{
 		$phpbus = MagLevPhp::getInstance('englishauction');
-		$recordType = "EnglishAuction.Bid"
-		$operationName = "CountForAuction"
+		$recordType = "EnglishAuction.Bid";
+		$operationName = "CountForAuction";
 		$args = [$recordType, $operationName, $strategyMethod];
-		$ret = $phpbus->call('EnglishAuction.SetupCountBidsQueryCallback', $args);
+		$ret = $phpbus->call('Persistence.AddGetter', $args);
 		return $ret;
 	}
 
@@ -356,10 +356,10 @@ class EnglishAuction
 	public function SetupHighestBidsQueryCallback($strategyMethod)
 	{
 		$phpbus = MagLevPhp::getInstance('englishauction');
-		$recordType = "EnglishAuction.Bid"
-		$operationName = "FindByHighestPriceForAuction"
+		$recordType = "EnglishAuction.Bid";
+		$operationName = "FindByHighestPriceForAuction";
 		$args = [$recordType, $operationName, $strategyMethod];
-		$ret = $phpbus->call('EnglishAuction.SetupHighestBidsQueryCallback', $args);
+		$ret = $phpbus->call('Persistence.AddGetter', $args);
 		return $ret;
 	}
 
@@ -371,10 +371,10 @@ class EnglishAuction
 	public function SetupNewBidQueryCallback($strategyMethod)
 	{
 		$phpbus = MagLevPhp::getInstance('englishauction');
-		$recordType = "EnglishAuction.Bid"
-		$operationName = "New"
+		$recordType = "EnglishAuction.Bid";
+		$operationName = "New";
 		$args = [$recordType, $operationName, $strategyMethod];
-		$ret = $phpbus->call('EnglishAuction.SetupNewBidQueryCallback', $args);
+		$ret = $phpbus->call('Persistence.AddGetter', $args);
 		return $ret;
 	}
 
