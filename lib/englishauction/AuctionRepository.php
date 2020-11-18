@@ -10,6 +10,7 @@ use \maglev\MagLevString;
 use \maglev\MagLevNull;
 use \php\Boot;
 use \haxe\Exception;
+use \maglev\MagLevResult;
 use \maglev\MagLev;
 use \maglev\MagLevBoolean;
 use \maglev\MagLevArray;
@@ -33,18 +34,58 @@ class AuctionRepository {
 
 	/**
 	 * @param AuctionModel $auction
+	 * @param \Closure $callback
 	 * 
 	 * @return void
 	 */
-	public function Add ($auction) {
+	public function Add ($auction, $callback) {
+		#/src/englishauction/AuctionRepository.hx:14: characters 9-54
+		$obj = MagLevObject::create();
+		#/src/englishauction/AuctionRepository.hx:15: characters 9-62
+		$obj->set("start", MagLevNumber::fromInt($auction->start));
+		#/src/englishauction/AuctionRepository.hx:16: characters 9-58
+		$obj->set("end", MagLevNumber::fromInt($auction->end));
+		#/src/englishauction/AuctionRepository.hx:17: characters 9-80
+		$obj->set("startingPrice", MagLevNumber::fromFloat($auction->startingPrice));
+		#/src/englishauction/AuctionRepository.hx:18: characters 9-78
+		$obj->set("reservePrice", MagLevNumber::fromFloat($auction->reservePrice));
+		#/src/englishauction/AuctionRepository.hx:19: characters 9-82
+		$obj->set("priceIncrement", MagLevNumber::fromFloat($auction->priceIncrement));
+		#/src/englishauction/AuctionRepository.hx:20: characters 9-55
+		$myargs = MagLevArray::create();
+		#/src/englishauction/AuctionRepository.hx:21: characters 9-71
+		$myargs->push(MagLevString::fromString("EnglishAuction.Auction"));
+		#/src/englishauction/AuctionRepository.hx:22: characters 9-58
+		$myargs->push(MagLevString::fromString("CreateNew"));
+		#/src/englishauction/AuctionRepository.hx:23: characters 9-54
+		$myarr = MagLevArray::create();
+		#/src/englishauction/AuctionRepository.hx:24: characters 9-24
+		$myarr->push($obj);
+		#/src/englishauction/AuctionRepository.hx:25: characters 9-27
+		$myargs->push($myarr);
+		#/src/englishauction/AuctionRepository.hx:26: characters 9-76
+		$res = $this->bus->call("Persistence.Mutate", $myargs);
+		#/src/englishauction/AuctionRepository.hx:27: lines 27-30
+		$res->onResult(function ($ret) use (&$callback) {
+			#/src/englishauction/AuctionRepository.hx:28: characters 13-58
+			$callback((Boot::typedCast(Boot::getClass(MagLevString::class), $ret))->getString());
+			#/src/englishauction/AuctionRepository.hx:29: characters 13-64
+			return MagLevResult::fromResult(MagLevNull::create());
+		});
+		#/src/englishauction/AuctionRepository.hx:31: lines 31-33
+		$res->onError(function ($err) {
+			#/src/englishauction/AuctionRepository.hx:32: characters 13-18
+			throw Exception::thrown($err->getMessage());
+		});
 	}
 
 	/**
 	 * @param AuctionModel $auction
+	 * @param \Closure $callback
 	 * 
 	 * @return void
 	 */
-	public function Edit ($auction) {
+	public function Edit ($auction, $callback) {
 	}
 
 	/**
@@ -54,65 +95,76 @@ class AuctionRepository {
 	 * @param int $perpage
 	 * @param string $sort
 	 * @param bool $asc
+	 * @param \Closure $callback
 	 * 
-	 * @return \Array_hx
+	 * @return void
 	 */
-	public function FindAuctionsEnding ($endfrom, $endto, $page, $perpage, $sort, $asc) {
-		#/src/englishauction/AuctionRepository.hx:51: characters 9-50
+	public function FindAuctionsEnding ($endfrom, $endto, $page, $perpage, $sort, $asc, $callback) {
+		#/src/englishauction/AuctionRepository.hx:73: characters 9-50
 		$auctions = new \Array_hx();
-		#/src/englishauction/AuctionRepository.hx:52: characters 9-55
+		#/src/englishauction/AuctionRepository.hx:74: characters 9-55
 		$myargs = MagLevArray::create();
-		#/src/englishauction/AuctionRepository.hx:53: characters 9-71
+		#/src/englishauction/AuctionRepository.hx:75: characters 9-71
 		$myargs->push(MagLevString::fromString("EnglishAuction.Auction"));
-		#/src/englishauction/AuctionRepository.hx:54: characters 9-59
+		#/src/englishauction/AuctionRepository.hx:76: characters 9-59
 		$myargs->push(MagLevString::fromString("FindEnding"));
-		#/src/englishauction/AuctionRepository.hx:55: characters 9-56
+		#/src/englishauction/AuctionRepository.hx:77: characters 9-56
 		$myargs2 = MagLevArray::create();
-		#/src/englishauction/AuctionRepository.hx:56: characters 9-52
+		#/src/englishauction/AuctionRepository.hx:78: characters 9-52
 		$myargs2->push(MagLevNumber::fromInt($endfrom));
-		#/src/englishauction/AuctionRepository.hx:57: characters 9-50
+		#/src/englishauction/AuctionRepository.hx:79: characters 9-50
 		$myargs2->push(MagLevNumber::fromInt($endto));
-		#/src/englishauction/AuctionRepository.hx:58: characters 9-49
+		#/src/englishauction/AuctionRepository.hx:80: characters 9-49
 		$myargs2->push(MagLevNumber::fromInt($page));
-		#/src/englishauction/AuctionRepository.hx:59: characters 9-52
+		#/src/englishauction/AuctionRepository.hx:81: characters 9-52
 		$myargs2->push(MagLevNumber::fromInt($perpage));
-		#/src/englishauction/AuctionRepository.hx:60: characters 9-52
+		#/src/englishauction/AuctionRepository.hx:82: characters 9-52
 		$myargs2->push(MagLevString::fromString($sort));
-		#/src/englishauction/AuctionRepository.hx:61: characters 9-50
+		#/src/englishauction/AuctionRepository.hx:83: characters 9-50
 		$myargs2->push(MagLevBoolean::fromBool($asc));
-		#/src/englishauction/AuctionRepository.hx:62: characters 9-29
+		#/src/englishauction/AuctionRepository.hx:84: characters 9-29
 		$myargs->push($myargs2);
-		#/src/englishauction/AuctionRepository.hx:63: characters 9-68
+		#/src/englishauction/AuctionRepository.hx:85: characters 9-68
 		$res = $this->bus->call("Persistence.Get", $myargs);
-		#/src/englishauction/AuctionRepository.hx:64: characters 9-66
-		$arr = Boot::typedCast(Boot::getClass(MagLevArray::class), $res->getResult());
-		#/src/englishauction/AuctionRepository.hx:65: characters 9-19
-		$i = 0;
-		#/src/englishauction/AuctionRepository.hx:66: lines 66-77
-		while ($i < $arr->size()) {
-			#/src/englishauction/AuctionRepository.hx:67: characters 13-58
-			$model = new AuctionModel();
-			#/src/englishauction/AuctionRepository.hx:68: characters 13-57
-			$resobj = Boot::typedCast(Boot::getClass(MagLevObject::class), $arr->get($i));
-			#/src/englishauction/AuctionRepository.hx:69: characters 13-79
-			$model->id = (Boot::typedCast(Boot::getClass(MagLevString::class), $resobj->get("auctionId")))->getString();
-			#/src/englishauction/AuctionRepository.hx:70: characters 13-75
-			$model->start = (Boot::typedCast(Boot::getClass(MagLevNumber::class), $resobj->get("start")))->getInt();
-			#/src/englishauction/AuctionRepository.hx:71: characters 13-71
-			$model->end = (Boot::typedCast(Boot::getClass(MagLevNumber::class), $resobj->get("end")))->getInt();
-			#/src/englishauction/AuctionRepository.hx:72: characters 13-93
-			$model->startingPrice = (Boot::typedCast(Boot::getClass(MagLevNumber::class), $resobj->get("startingPrice")))->getFloat();
-			#/src/englishauction/AuctionRepository.hx:73: characters 13-91
-			$model->reservePrice = (Boot::typedCast(Boot::getClass(MagLevNumber::class), $resobj->get("reservePrice")))->getFloat();
-			#/src/englishauction/AuctionRepository.hx:74: characters 13-95
-			$model->priceIncrement = (Boot::typedCast(Boot::getClass(MagLevNumber::class), $resobj->get("priceIncrement")))->getFloat();
-			#/src/englishauction/AuctionRepository.hx:75: characters 13-33
-			$auctions->arr[$auctions->length++] = $model;
-			#/src/englishauction/AuctionRepository.hx:76: characters 13-16
-			++$i;
-		}
-		#/src/englishauction/AuctionRepository.hx:78: characters 9-24
-		return $auctions;
+		#/src/englishauction/AuctionRepository.hx:86: lines 86-88
+		$res->onError(function ($err) {
+			#/src/englishauction/AuctionRepository.hx:87: characters 13-18
+			throw Exception::thrown($err->getMessage());
+		});
+		#/src/englishauction/AuctionRepository.hx:89: lines 89-106
+		$res->onResult(function ($ret) use (&$auctions, &$callback) {
+			#/src/englishauction/AuctionRepository.hx:90: characters 13-58
+			$arr = Boot::typedCast(Boot::getClass(MagLevArray::class), $ret);
+			#/src/englishauction/AuctionRepository.hx:91: characters 13-23
+			$i = 0;
+			#/src/englishauction/AuctionRepository.hx:92: lines 92-103
+			while ($i < $arr->size()) {
+				#/src/englishauction/AuctionRepository.hx:93: characters 17-62
+				$model = new AuctionModel();
+				#/src/englishauction/AuctionRepository.hx:94: characters 17-61
+				$resobj = Boot::typedCast(Boot::getClass(MagLevObject::class), $arr->get($i));
+				#/src/englishauction/AuctionRepository.hx:95: characters 17-83
+				$model->id = (Boot::typedCast(Boot::getClass(MagLevString::class), $resobj->get("auctionId")))->getString();
+				#/src/englishauction/AuctionRepository.hx:96: characters 17-79
+				$model->start = (Boot::typedCast(Boot::getClass(MagLevNumber::class), $resobj->get("start")))->getInt();
+				#/src/englishauction/AuctionRepository.hx:97: characters 17-75
+				$model->end = (Boot::typedCast(Boot::getClass(MagLevNumber::class), $resobj->get("end")))->getInt();
+				#/src/englishauction/AuctionRepository.hx:98: characters 17-97
+				$model->startingPrice = (Boot::typedCast(Boot::getClass(MagLevNumber::class), $resobj->get("startingPrice")))->getFloat();
+				#/src/englishauction/AuctionRepository.hx:99: characters 17-95
+				$model->reservePrice = (Boot::typedCast(Boot::getClass(MagLevNumber::class), $resobj->get("reservePrice")))->getFloat();
+				#/src/englishauction/AuctionRepository.hx:100: characters 17-99
+				$model->priceIncrement = (Boot::typedCast(Boot::getClass(MagLevNumber::class), $resobj->get("priceIncrement")))->getFloat();
+				#/src/englishauction/AuctionRepository.hx:101: characters 17-37
+				$auctions->arr[$auctions->length++] = $model;
+				#/src/englishauction/AuctionRepository.hx:102: characters 17-20
+				++$i;
+			}
+			#/src/englishauction/AuctionRepository.hx:104: characters 13-31
+			$callback($auctions);
+			#/src/englishauction/AuctionRepository.hx:105: characters 13-64
+			return MagLevResult::fromResult(MagLevNull::create());
+		});
 	}
 
 	/**
@@ -122,136 +174,25 @@ class AuctionRepository {
 	 * @param int $perpage
 	 * @param string $sort
 	 * @param bool $asc
+	 * @param \Closure $callback
 	 * 
-	 * @return \Array_hx
+	 * @return void
 	 */
-	public function FindAuctionsStarting ($startfrom, $startto, $page, $perpage, $sort, $asc) {
-		#/src/englishauction/AuctionRepository.hx:82: characters 9-50
+	public function FindAuctionsStarting ($startfrom, $startto, $page, $perpage, $sort, $asc, $callback) {
+		#/src/englishauction/AuctionRepository.hx:111: characters 9-50
 		$auctions = new \Array_hx();
-		#/src/englishauction/AuctionRepository.hx:83: characters 9-55
+		#/src/englishauction/AuctionRepository.hx:112: characters 9-55
 		$myargs = MagLevArray::create();
-		#/src/englishauction/AuctionRepository.hx:84: characters 9-71
+		#/src/englishauction/AuctionRepository.hx:113: characters 9-71
 		$myargs->push(MagLevString::fromString("EnglishAuction.Auction"));
-		#/src/englishauction/AuctionRepository.hx:85: characters 9-61
+		#/src/englishauction/AuctionRepository.hx:114: characters 9-61
 		$myargs->push(MagLevString::fromString("FindStarting"));
-		#/src/englishauction/AuctionRepository.hx:86: characters 9-56
+		#/src/englishauction/AuctionRepository.hx:115: characters 9-56
 		$myargs2 = MagLevArray::create();
-		#/src/englishauction/AuctionRepository.hx:87: characters 9-54
+		#/src/englishauction/AuctionRepository.hx:116: characters 9-54
 		$myargs2->push(MagLevNumber::fromInt($startfrom));
-		#/src/englishauction/AuctionRepository.hx:88: characters 9-52
+		#/src/englishauction/AuctionRepository.hx:117: characters 9-52
 		$myargs2->push(MagLevNumber::fromInt($startto));
-		#/src/englishauction/AuctionRepository.hx:89: characters 9-49
-		$myargs2->push(MagLevNumber::fromInt($page));
-		#/src/englishauction/AuctionRepository.hx:90: characters 9-52
-		$myargs2->push(MagLevNumber::fromInt($perpage));
-		#/src/englishauction/AuctionRepository.hx:91: characters 9-52
-		$myargs2->push(MagLevString::fromString($sort));
-		#/src/englishauction/AuctionRepository.hx:92: characters 9-50
-		$myargs2->push(MagLevBoolean::fromBool($asc));
-		#/src/englishauction/AuctionRepository.hx:93: characters 9-29
-		$myargs->push($myargs2);
-		#/src/englishauction/AuctionRepository.hx:94: characters 9-68
-		$res = $this->bus->call("Persistence.Get", $myargs);
-		#/src/englishauction/AuctionRepository.hx:95: characters 9-66
-		$arr = Boot::typedCast(Boot::getClass(MagLevArray::class), $res->getResult());
-		#/src/englishauction/AuctionRepository.hx:96: characters 9-19
-		$i = 0;
-		#/src/englishauction/AuctionRepository.hx:97: lines 97-108
-		while ($i < $arr->size()) {
-			#/src/englishauction/AuctionRepository.hx:98: characters 13-58
-			$model = new AuctionModel();
-			#/src/englishauction/AuctionRepository.hx:99: characters 13-57
-			$resobj = Boot::typedCast(Boot::getClass(MagLevObject::class), $arr->get($i));
-			#/src/englishauction/AuctionRepository.hx:100: characters 13-79
-			$model->id = (Boot::typedCast(Boot::getClass(MagLevString::class), $resobj->get("auctionId")))->getString();
-			#/src/englishauction/AuctionRepository.hx:101: characters 13-75
-			$model->start = (Boot::typedCast(Boot::getClass(MagLevNumber::class), $resobj->get("start")))->getInt();
-			#/src/englishauction/AuctionRepository.hx:102: characters 13-71
-			$model->end = (Boot::typedCast(Boot::getClass(MagLevNumber::class), $resobj->get("end")))->getInt();
-			#/src/englishauction/AuctionRepository.hx:103: characters 13-93
-			$model->startingPrice = (Boot::typedCast(Boot::getClass(MagLevNumber::class), $resobj->get("startingPrice")))->getFloat();
-			#/src/englishauction/AuctionRepository.hx:104: characters 13-91
-			$model->reservePrice = (Boot::typedCast(Boot::getClass(MagLevNumber::class), $resobj->get("reservePrice")))->getFloat();
-			#/src/englishauction/AuctionRepository.hx:105: characters 13-95
-			$model->priceIncrement = (Boot::typedCast(Boot::getClass(MagLevNumber::class), $resobj->get("priceIncrement")))->getFloat();
-			#/src/englishauction/AuctionRepository.hx:106: characters 13-33
-			$auctions->arr[$auctions->length++] = $model;
-			#/src/englishauction/AuctionRepository.hx:107: characters 13-16
-			++$i;
-		}
-		#/src/englishauction/AuctionRepository.hx:109: characters 9-24
-		return $auctions;
-	}
-
-	/**
-	 * @param string $auctionId
-	 * 
-	 * @return AuctionModel
-	 */
-	public function FindById ($auctionId) {
-		#/src/englishauction/AuctionRepository.hx:26: characters 9-55
-		$myargs = MagLevArray::create();
-		#/src/englishauction/AuctionRepository.hx:27: characters 9-71
-		$myargs->push(MagLevString::fromString("EnglishAuction.Auction"));
-		#/src/englishauction/AuctionRepository.hx:28: characters 9-57
-		$myargs->push(MagLevString::fromString("FindById"));
-		#/src/englishauction/AuctionRepository.hx:29: characters 9-56
-		$myargs2 = MagLevArray::create();
-		#/src/englishauction/AuctionRepository.hx:30: characters 9-57
-		$myargs2->push(MagLevString::fromString($auctionId));
-		#/src/englishauction/AuctionRepository.hx:31: characters 9-29
-		$myargs->push($myargs2);
-		#/src/englishauction/AuctionRepository.hx:32: characters 9-68
-		$res = $this->bus->call("Persistence.Get", $myargs);
-		#/src/englishauction/AuctionRepository.hx:33: lines 33-35
-		if ($res->isError()) {
-			#/src/englishauction/AuctionRepository.hx:34: characters 13-18
-			throw Exception::thrown($res->getError()->getMessage());
-		}
-		#/src/englishauction/AuctionRepository.hx:36: lines 36-38
-		if (($res->getResult() instanceof MagLevNull)) {
-			#/src/englishauction/AuctionRepository.hx:37: characters 13-24
-			return null;
-		}
-		#/src/englishauction/AuctionRepository.hx:39: characters 9-71
-		$resobj = Boot::typedCast(Boot::getClass(MagLevObject::class), $res->getResult());
-		#/src/englishauction/AuctionRepository.hx:40: characters 9-54
-		$model = new AuctionModel();
-		#/src/englishauction/AuctionRepository.hx:41: characters 9-75
-		$model->id = (Boot::typedCast(Boot::getClass(MagLevString::class), $resobj->get("auctionId")))->getString();
-		#/src/englishauction/AuctionRepository.hx:42: characters 9-71
-		$model->start = (Boot::typedCast(Boot::getClass(MagLevNumber::class), $resobj->get("start")))->getInt();
-		#/src/englishauction/AuctionRepository.hx:43: characters 9-67
-		$model->end = (Boot::typedCast(Boot::getClass(MagLevNumber::class), $resobj->get("end")))->getInt();
-		#/src/englishauction/AuctionRepository.hx:44: characters 9-89
-		$model->startingPrice = (Boot::typedCast(Boot::getClass(MagLevNumber::class), $resobj->get("startingPrice")))->getFloat();
-		#/src/englishauction/AuctionRepository.hx:45: characters 9-87
-		$model->reservePrice = (Boot::typedCast(Boot::getClass(MagLevNumber::class), $resobj->get("reservePrice")))->getFloat();
-		#/src/englishauction/AuctionRepository.hx:46: characters 9-91
-		$model->priceIncrement = (Boot::typedCast(Boot::getClass(MagLevNumber::class), $resobj->get("priceIncrement")))->getFloat();
-		#/src/englishauction/AuctionRepository.hx:47: characters 9-21
-		return $model;
-	}
-
-	/**
-	 * @param int $page
-	 * @param int $perpage
-	 * @param string $sort
-	 * @param bool $asc
-	 * 
-	 * @return \Array_hx
-	 */
-	public function FindOpenAuctions ($page, $perpage, $sort, $asc) {
-		#/src/englishauction/AuctionRepository.hx:113: characters 9-50
-		$auctions = new \Array_hx();
-		#/src/englishauction/AuctionRepository.hx:114: characters 9-55
-		$myargs = MagLevArray::create();
-		#/src/englishauction/AuctionRepository.hx:115: characters 9-71
-		$myargs->push(MagLevString::fromString("EnglishAuction.Auction"));
-		#/src/englishauction/AuctionRepository.hx:116: characters 9-57
-		$myargs->push(MagLevString::fromString("FindOpen"));
-		#/src/englishauction/AuctionRepository.hx:117: characters 9-56
-		$myargs2 = MagLevArray::create();
 		#/src/englishauction/AuctionRepository.hx:118: characters 9-49
 		$myargs2->push(MagLevNumber::fromInt($page));
 		#/src/englishauction/AuctionRepository.hx:119: characters 9-52
@@ -264,43 +205,183 @@ class AuctionRepository {
 		$myargs->push($myargs2);
 		#/src/englishauction/AuctionRepository.hx:123: characters 9-68
 		$res = $this->bus->call("Persistence.Get", $myargs);
-		#/src/englishauction/AuctionRepository.hx:124: characters 9-66
-		$arr = Boot::typedCast(Boot::getClass(MagLevArray::class), $res->getResult());
-		#/src/englishauction/AuctionRepository.hx:125: characters 9-19
-		$i = 0;
-		#/src/englishauction/AuctionRepository.hx:126: lines 126-137
-		while ($i < $arr->size()) {
-			#/src/englishauction/AuctionRepository.hx:127: characters 13-58
-			$model = new AuctionModel();
-			#/src/englishauction/AuctionRepository.hx:128: characters 13-57
-			$resobj = Boot::typedCast(Boot::getClass(MagLevObject::class), $arr->get($i));
-			#/src/englishauction/AuctionRepository.hx:129: characters 13-79
-			$model->id = (Boot::typedCast(Boot::getClass(MagLevString::class), $resobj->get("auctionId")))->getString();
-			#/src/englishauction/AuctionRepository.hx:130: characters 13-75
-			$model->start = (Boot::typedCast(Boot::getClass(MagLevNumber::class), $resobj->get("start")))->getInt();
-			#/src/englishauction/AuctionRepository.hx:131: characters 13-71
-			$model->end = (Boot::typedCast(Boot::getClass(MagLevNumber::class), $resobj->get("end")))->getInt();
-			#/src/englishauction/AuctionRepository.hx:132: characters 13-93
-			$model->startingPrice = (Boot::typedCast(Boot::getClass(MagLevNumber::class), $resobj->get("startingPrice")))->getFloat();
-			#/src/englishauction/AuctionRepository.hx:133: characters 13-91
-			$model->reservePrice = (Boot::typedCast(Boot::getClass(MagLevNumber::class), $resobj->get("reservePrice")))->getFloat();
-			#/src/englishauction/AuctionRepository.hx:134: characters 13-95
-			$model->priceIncrement = (Boot::typedCast(Boot::getClass(MagLevNumber::class), $resobj->get("priceIncrement")))->getFloat();
-			#/src/englishauction/AuctionRepository.hx:135: characters 13-33
-			$auctions->arr[$auctions->length++] = $model;
-			#/src/englishauction/AuctionRepository.hx:136: characters 13-16
-			++$i;
-		}
-		#/src/englishauction/AuctionRepository.hx:138: characters 9-24
-		return $auctions;
+		#/src/englishauction/AuctionRepository.hx:124: lines 124-126
+		$res->onError(function ($err) {
+			#/src/englishauction/AuctionRepository.hx:125: characters 13-18
+			throw Exception::thrown($err->getMessage());
+		});
+		#/src/englishauction/AuctionRepository.hx:127: lines 127-144
+		$res->onResult(function ($ret) use (&$auctions, &$callback, &$res) {
+			#/src/englishauction/AuctionRepository.hx:128: characters 13-70
+			$arr = Boot::typedCast(Boot::getClass(MagLevArray::class), $res->getResult());
+			#/src/englishauction/AuctionRepository.hx:129: characters 13-23
+			$i = 0;
+			#/src/englishauction/AuctionRepository.hx:130: lines 130-141
+			while ($i < $arr->size()) {
+				#/src/englishauction/AuctionRepository.hx:131: characters 17-62
+				$model = new AuctionModel();
+				#/src/englishauction/AuctionRepository.hx:132: characters 17-61
+				$resobj = Boot::typedCast(Boot::getClass(MagLevObject::class), $arr->get($i));
+				#/src/englishauction/AuctionRepository.hx:133: characters 17-83
+				$model->id = (Boot::typedCast(Boot::getClass(MagLevString::class), $resobj->get("auctionId")))->getString();
+				#/src/englishauction/AuctionRepository.hx:134: characters 17-79
+				$model->start = (Boot::typedCast(Boot::getClass(MagLevNumber::class), $resobj->get("start")))->getInt();
+				#/src/englishauction/AuctionRepository.hx:135: characters 17-75
+				$model->end = (Boot::typedCast(Boot::getClass(MagLevNumber::class), $resobj->get("end")))->getInt();
+				#/src/englishauction/AuctionRepository.hx:136: characters 17-97
+				$model->startingPrice = (Boot::typedCast(Boot::getClass(MagLevNumber::class), $resobj->get("startingPrice")))->getFloat();
+				#/src/englishauction/AuctionRepository.hx:137: characters 17-95
+				$model->reservePrice = (Boot::typedCast(Boot::getClass(MagLevNumber::class), $resobj->get("reservePrice")))->getFloat();
+				#/src/englishauction/AuctionRepository.hx:138: characters 17-99
+				$model->priceIncrement = (Boot::typedCast(Boot::getClass(MagLevNumber::class), $resobj->get("priceIncrement")))->getFloat();
+				#/src/englishauction/AuctionRepository.hx:139: characters 17-37
+				$auctions->arr[$auctions->length++] = $model;
+				#/src/englishauction/AuctionRepository.hx:140: characters 17-20
+				++$i;
+			}
+			#/src/englishauction/AuctionRepository.hx:142: characters 13-31
+			$callback($auctions);
+			#/src/englishauction/AuctionRepository.hx:143: characters 13-64
+			return MagLevResult::fromResult(MagLevNull::create());
+		});
 	}
 
 	/**
 	 * @param string $auctionId
+	 * @param \Closure $callback
 	 * 
 	 * @return void
 	 */
-	public function Remove ($auctionId) {
+	public function FindById ($auctionId, $callback) {
+		#/src/englishauction/AuctionRepository.hx:45: characters 9-55
+		$myargs = MagLevArray::create();
+		#/src/englishauction/AuctionRepository.hx:46: characters 9-71
+		$myargs->push(MagLevString::fromString("EnglishAuction.Auction"));
+		#/src/englishauction/AuctionRepository.hx:47: characters 9-57
+		$myargs->push(MagLevString::fromString("FindById"));
+		#/src/englishauction/AuctionRepository.hx:48: characters 9-56
+		$myargs2 = MagLevArray::create();
+		#/src/englishauction/AuctionRepository.hx:49: characters 9-57
+		$myargs2->push(MagLevString::fromString($auctionId));
+		#/src/englishauction/AuctionRepository.hx:50: characters 9-29
+		$myargs->push($myargs2);
+		#/src/englishauction/AuctionRepository.hx:51: characters 9-68
+		$res = $this->bus->call("Persistence.Get", $myargs);
+		#/src/englishauction/AuctionRepository.hx:52: lines 52-54
+		$res->onError(function ($err) {
+			#/src/englishauction/AuctionRepository.hx:53: characters 13-18
+			throw Exception::thrown($err->getMessage());
+		});
+		#/src/englishauction/AuctionRepository.hx:55: lines 55-69
+		$res->onResult(function ($ret) use (&$callback, &$res) {
+			#/src/englishauction/AuctionRepository.hx:56: lines 56-58
+			if (($res->getResult() instanceof MagLevNull)) {
+				#/src/englishauction/AuctionRepository.hx:57: characters 17-31
+				$callback(null);
+			}
+			#/src/englishauction/AuctionRepository.hx:59: characters 13-75
+			$resobj = Boot::typedCast(Boot::getClass(MagLevObject::class), $res->getResult());
+			#/src/englishauction/AuctionRepository.hx:60: characters 13-58
+			$model = new AuctionModel();
+			#/src/englishauction/AuctionRepository.hx:61: characters 13-79
+			$model->id = (Boot::typedCast(Boot::getClass(MagLevString::class), $resobj->get("auctionId")))->getString();
+			#/src/englishauction/AuctionRepository.hx:62: characters 13-75
+			$model->start = (Boot::typedCast(Boot::getClass(MagLevNumber::class), $resobj->get("start")))->getInt();
+			#/src/englishauction/AuctionRepository.hx:63: characters 13-71
+			$model->end = (Boot::typedCast(Boot::getClass(MagLevNumber::class), $resobj->get("end")))->getInt();
+			#/src/englishauction/AuctionRepository.hx:64: characters 13-93
+			$model->startingPrice = (Boot::typedCast(Boot::getClass(MagLevNumber::class), $resobj->get("startingPrice")))->getFloat();
+			#/src/englishauction/AuctionRepository.hx:65: characters 13-91
+			$model->reservePrice = (Boot::typedCast(Boot::getClass(MagLevNumber::class), $resobj->get("reservePrice")))->getFloat();
+			#/src/englishauction/AuctionRepository.hx:66: characters 13-95
+			$model->priceIncrement = (Boot::typedCast(Boot::getClass(MagLevNumber::class), $resobj->get("priceIncrement")))->getFloat();
+			#/src/englishauction/AuctionRepository.hx:67: characters 13-28
+			$callback($model);
+			#/src/englishauction/AuctionRepository.hx:68: characters 13-64
+			return MagLevResult::fromResult(MagLevNull::create());
+		});
+	}
+
+	/**
+	 * @param int $page
+	 * @param int $perpage
+	 * @param string $sort
+	 * @param bool $asc
+	 * @param \Closure $callback
+	 * 
+	 * @return void
+	 */
+	public function FindOpenAuctions ($page, $perpage, $sort, $asc, $callback) {
+		#/src/englishauction/AuctionRepository.hx:148: characters 9-50
+		$auctions = new \Array_hx();
+		#/src/englishauction/AuctionRepository.hx:149: characters 9-55
+		$myargs = MagLevArray::create();
+		#/src/englishauction/AuctionRepository.hx:150: characters 9-71
+		$myargs->push(MagLevString::fromString("EnglishAuction.Auction"));
+		#/src/englishauction/AuctionRepository.hx:151: characters 9-57
+		$myargs->push(MagLevString::fromString("FindOpen"));
+		#/src/englishauction/AuctionRepository.hx:152: characters 9-56
+		$myargs2 = MagLevArray::create();
+		#/src/englishauction/AuctionRepository.hx:153: characters 9-49
+		$myargs2->push(MagLevNumber::fromInt($page));
+		#/src/englishauction/AuctionRepository.hx:154: characters 9-52
+		$myargs2->push(MagLevNumber::fromInt($perpage));
+		#/src/englishauction/AuctionRepository.hx:155: characters 9-52
+		$myargs2->push(MagLevString::fromString($sort));
+		#/src/englishauction/AuctionRepository.hx:156: characters 9-50
+		$myargs2->push(MagLevBoolean::fromBool($asc));
+		#/src/englishauction/AuctionRepository.hx:157: characters 9-29
+		$myargs->push($myargs2);
+		#/src/englishauction/AuctionRepository.hx:158: characters 9-68
+		$res = $this->bus->call("Persistence.Get", $myargs);
+		#/src/englishauction/AuctionRepository.hx:159: lines 159-161
+		$res->onError(function ($err) {
+			#/src/englishauction/AuctionRepository.hx:160: characters 13-18
+			throw Exception::thrown($err->getMessage());
+		});
+		#/src/englishauction/AuctionRepository.hx:162: lines 162-179
+		$res->onResult(function ($ret) use (&$auctions, &$callback, &$res) {
+			#/src/englishauction/AuctionRepository.hx:163: characters 13-70
+			$arr = Boot::typedCast(Boot::getClass(MagLevArray::class), $res->getResult());
+			#/src/englishauction/AuctionRepository.hx:164: characters 13-23
+			$i = 0;
+			#/src/englishauction/AuctionRepository.hx:165: lines 165-176
+			while ($i < $arr->size()) {
+				#/src/englishauction/AuctionRepository.hx:166: characters 17-62
+				$model = new AuctionModel();
+				#/src/englishauction/AuctionRepository.hx:167: characters 17-61
+				$resobj = Boot::typedCast(Boot::getClass(MagLevObject::class), $arr->get($i));
+				#/src/englishauction/AuctionRepository.hx:168: characters 17-83
+				$model->id = (Boot::typedCast(Boot::getClass(MagLevString::class), $resobj->get("auctionId")))->getString();
+				#/src/englishauction/AuctionRepository.hx:169: characters 17-79
+				$model->start = (Boot::typedCast(Boot::getClass(MagLevNumber::class), $resobj->get("start")))->getInt();
+				#/src/englishauction/AuctionRepository.hx:170: characters 17-75
+				$model->end = (Boot::typedCast(Boot::getClass(MagLevNumber::class), $resobj->get("end")))->getInt();
+				#/src/englishauction/AuctionRepository.hx:171: characters 17-97
+				$model->startingPrice = (Boot::typedCast(Boot::getClass(MagLevNumber::class), $resobj->get("startingPrice")))->getFloat();
+				#/src/englishauction/AuctionRepository.hx:172: characters 17-95
+				$model->reservePrice = (Boot::typedCast(Boot::getClass(MagLevNumber::class), $resobj->get("reservePrice")))->getFloat();
+				#/src/englishauction/AuctionRepository.hx:173: characters 17-99
+				$model->priceIncrement = (Boot::typedCast(Boot::getClass(MagLevNumber::class), $resobj->get("priceIncrement")))->getFloat();
+				#/src/englishauction/AuctionRepository.hx:174: characters 17-37
+				$auctions->arr[$auctions->length++] = $model;
+				#/src/englishauction/AuctionRepository.hx:175: characters 17-20
+				++$i;
+			}
+			#/src/englishauction/AuctionRepository.hx:177: characters 13-31
+			$callback($auctions);
+			#/src/englishauction/AuctionRepository.hx:178: characters 13-64
+			return MagLevResult::fromResult(MagLevNull::create());
+		});
+	}
+
+	/**
+	 * @param string $auctionId
+	 * @param \Closure $callback
+	 * 
+	 * @return void
+	 */
+	public function Remove ($auctionId, $callback) {
 	}
 }
 
