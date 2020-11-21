@@ -1,6 +1,6 @@
 {
     "name": "mindpowered/englishauction",
-    "version": "0.0.53",
+    "version": "0.0.54",
     "description": "EnglishAuction",
     "license": "CPAL-1.0",
     "autoload": {
@@ -13,6 +13,7 @@
         }
     },
     "require": {
+        "mindpowered/persistence": "*",
         "mindpowered/maglev": "*"
     }
 }
