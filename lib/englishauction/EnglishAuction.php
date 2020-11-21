@@ -63,21 +63,21 @@ class EnglishAuction {
 	 * @return MagLevObject
 	 */
 	public function auctionModelToMagLevObject ($m) {
-		#/src/englishauction/EnglishAuction.hx:420: characters 3-33
+		#/src/englishauction/EnglishAuction.hx:387: characters 3-33
 		$o = MagLevObject::create();
-		#/src/englishauction/EnglishAuction.hx:421: characters 3-52
+		#/src/englishauction/EnglishAuction.hx:388: characters 3-52
 		$o->set("auctionId", MagLevString::fromString($m->id));
-		#/src/englishauction/EnglishAuction.hx:422: characters 3-48
+		#/src/englishauction/EnglishAuction.hx:389: characters 3-48
 		$o->set("start", MagLevNumber::fromInt($m->start));
-		#/src/englishauction/EnglishAuction.hx:423: characters 3-44
+		#/src/englishauction/EnglishAuction.hx:390: characters 3-44
 		$o->set("end", MagLevNumber::fromInt($m->end));
-		#/src/englishauction/EnglishAuction.hx:424: characters 3-66
+		#/src/englishauction/EnglishAuction.hx:391: characters 3-66
 		$o->set("startingPrice", MagLevNumber::fromFloat($m->startingPrice));
-		#/src/englishauction/EnglishAuction.hx:425: characters 3-64
+		#/src/englishauction/EnglishAuction.hx:392: characters 3-64
 		$o->set("reservePrice", MagLevNumber::fromFloat($m->reservePrice));
-		#/src/englishauction/EnglishAuction.hx:426: characters 3-68
+		#/src/englishauction/EnglishAuction.hx:393: characters 3-68
 		$o->set("priceIncrement", MagLevNumber::fromFloat($m->priceIncrement));
-		#/src/englishauction/EnglishAuction.hx:427: characters 3-11
+		#/src/englishauction/EnglishAuction.hx:394: characters 3-11
 		return $o;
 	}
 
@@ -87,61 +87,61 @@ class EnglishAuction {
 	 * @return mixed
 	 */
 	public function convertToHaxe ($x) {
-		#/src/englishauction/EnglishAuction.hx:431: lines 431-468
+		#/src/englishauction/EnglishAuction.hx:398: lines 398-435
 		if ($x->getType() === MagLevNull::getStaticType()) {
-			#/src/englishauction/EnglishAuction.hx:432: characters 13-24
+			#/src/englishauction/EnglishAuction.hx:399: characters 13-24
 			return null;
 		} else if ($x->getType() === MagLevBoolean::getStaticType()) {
-			#/src/englishauction/EnglishAuction.hx:435: characters 13-44
+			#/src/englishauction/EnglishAuction.hx:402: characters 13-44
 			$y = Boot::typedCast(Boot::getClass(MagLevBoolean::class), $x);
-			#/src/englishauction/EnglishAuction.hx:436: characters 13-31
+			#/src/englishauction/EnglishAuction.hx:403: characters 13-31
 			return $y->getBool();
 		} else if ($x->getType() === MagLevString::getStaticType()) {
-			#/src/englishauction/EnglishAuction.hx:439: characters 13-43
+			#/src/englishauction/EnglishAuction.hx:406: characters 13-43
 			$y = Boot::typedCast(Boot::getClass(MagLevString::class), $x);
-			#/src/englishauction/EnglishAuction.hx:440: characters 13-33
+			#/src/englishauction/EnglishAuction.hx:407: characters 13-33
 			return $y->getString();
 		} else if ($x->getType() === MagLevNumber::getStaticType()) {
-			#/src/englishauction/EnglishAuction.hx:443: characters 13-43
+			#/src/englishauction/EnglishAuction.hx:410: characters 13-43
 			$y = Boot::typedCast(Boot::getClass(MagLevNumber::class), $x);
-			#/src/englishauction/EnglishAuction.hx:444: characters 13-32
+			#/src/englishauction/EnglishAuction.hx:411: characters 13-32
 			return $y->getFloat();
 		} else if ($x->getType() === MagLevArray::getStaticType()) {
-			#/src/englishauction/EnglishAuction.hx:447: characters 13-42
+			#/src/englishauction/EnglishAuction.hx:414: characters 13-42
 			$y = Boot::typedCast(Boot::getClass(MagLevArray::class), $x);
-			#/src/englishauction/EnglishAuction.hx:448: characters 13-51
+			#/src/englishauction/EnglishAuction.hx:415: characters 13-51
 			$arr = new \Array_hx();
-			#/src/englishauction/EnglishAuction.hx:449: characters 13-23
+			#/src/englishauction/EnglishAuction.hx:416: characters 13-23
 			$i = 0;
-			#/src/englishauction/EnglishAuction.hx:450: lines 450-452
+			#/src/englishauction/EnglishAuction.hx:417: lines 417-419
 			while ($i < $y->size()) {
-				#/src/englishauction/EnglishAuction.hx:451: characters 17-50
+				#/src/englishauction/EnglishAuction.hx:418: characters 17-50
 				$x1 = $this->convertToHaxe($y->get($i));
 				$arr->arr[$arr->length++] = $x1;
 			}
-			#/src/englishauction/EnglishAuction.hx:453: characters 13-23
+			#/src/englishauction/EnglishAuction.hx:420: characters 13-23
 			return $arr;
 		} else if ($x->getType() === MagLevObject::getStaticType()) {
-			#/src/englishauction/EnglishAuction.hx:456: characters 13-43
+			#/src/englishauction/EnglishAuction.hx:423: characters 13-43
 			$y = Boot::typedCast(Boot::getClass(MagLevObject::class), $x);
-			#/src/englishauction/EnglishAuction.hx:457: characters 13-61
+			#/src/englishauction/EnglishAuction.hx:424: characters 13-61
 			$map = new StringMap();
-			#/src/englishauction/EnglishAuction.hx:458: characters 13-33
+			#/src/englishauction/EnglishAuction.hx:425: characters 13-33
 			$keys = $y->keys();
-			#/src/englishauction/EnglishAuction.hx:459: characters 13-23
+			#/src/englishauction/EnglishAuction.hx:426: characters 13-23
 			$i = 0;
-			#/src/englishauction/EnglishAuction.hx:460: lines 460-463
+			#/src/englishauction/EnglishAuction.hx:427: lines 427-430
 			while ($i < $keys->size()) {
-				#/src/englishauction/EnglishAuction.hx:461: characters 17-78
+				#/src/englishauction/EnglishAuction.hx:428: characters 17-78
 				$key = (Boot::typedCast(Boot::getClass(MagLevString::class), $keys->get($i)))->getString();
-				#/src/englishauction/EnglishAuction.hx:462: characters 17-56
+				#/src/englishauction/EnglishAuction.hx:429: characters 17-56
 				$value = $this->convertToHaxe($y->get($key));
 				$map->data[$key] = $value;
 			}
-			#/src/englishauction/EnglishAuction.hx:464: characters 13-23
+			#/src/englishauction/EnglishAuction.hx:431: characters 13-23
 			return $map;
 		} else {
-			#/src/englishauction/EnglishAuction.hx:467: characters 13-18
+			#/src/englishauction/EnglishAuction.hx:434: characters 13-18
 			throw Exception::thrown("convertToHaxe: unknown type");
 		}
 	}
@@ -152,83 +152,83 @@ class EnglishAuction {
 	 * @return MagLevAny
 	 */
 	public function convertToMagLev ($x) {
-		#/src/englishauction/EnglishAuction.hx:472: lines 472-517
+		#/src/englishauction/EnglishAuction.hx:439: lines 439-484
 		if ($x === null) {
-			#/src/englishauction/EnglishAuction.hx:473: characters 13-39
+			#/src/englishauction/EnglishAuction.hx:440: characters 13-39
 			return MagLevNull::create();
 		} else if (is_bool($x)) {
-			#/src/englishauction/EnglishAuction.hx:476: characters 13-57
+			#/src/englishauction/EnglishAuction.hx:443: characters 13-57
 			return MagLevBoolean::fromBool(Boot::typedCast(Boot::getClass('Bool'), $x));
 		} else if (is_string($x)) {
-			#/src/englishauction/EnglishAuction.hx:479: characters 13-60
+			#/src/englishauction/EnglishAuction.hx:446: characters 13-60
 			return MagLevString::fromString(Boot::typedCast(Boot::getClass('String'), $x));
 		} else if (Boot::isOfType($x, Boot::getClass('Int'))) {
-			#/src/englishauction/EnglishAuction.hx:482: characters 13-54
+			#/src/englishauction/EnglishAuction.hx:449: characters 13-54
 			return MagLevNumber::fromInt(Boot::typedCast(Boot::getClass('Int'), $x));
 		} else if ((is_float($x) || is_int($x))) {
-			#/src/englishauction/EnglishAuction.hx:485: characters 13-45
+			#/src/englishauction/EnglishAuction.hx:452: characters 13-45
 			return MagLevNumber::fromFloat($x);
 		} else if (($x instanceof \Array_hx)) {
-			#/src/englishauction/EnglishAuction.hx:488: characters 13-56
+			#/src/englishauction/EnglishAuction.hx:455: characters 13-56
 			$arr = MagLevArray::create();
-			#/src/englishauction/EnglishAuction.hx:489: characters 13-34
+			#/src/englishauction/EnglishAuction.hx:456: characters 13-34
 			$y = $x;
-			#/src/englishauction/EnglishAuction.hx:490: lines 490-492
+			#/src/englishauction/EnglishAuction.hx:457: lines 457-459
 			$_g = 0;
 			while ($_g < $y->length) {
-				#/src/englishauction/EnglishAuction.hx:490: characters 17-21
+				#/src/englishauction/EnglishAuction.hx:457: characters 17-21
 				$item = ($y->arr[$_g] ?? null);
-				#/src/englishauction/EnglishAuction.hx:490: lines 490-492
+				#/src/englishauction/EnglishAuction.hx:457: lines 457-459
 				++$_g;
-				#/src/englishauction/EnglishAuction.hx:491: characters 17-48
+				#/src/englishauction/EnglishAuction.hx:458: characters 17-48
 				$arr->push($this->convertToMagLev($item));
 			}
-			#/src/englishauction/EnglishAuction.hx:493: characters 13-23
+			#/src/englishauction/EnglishAuction.hx:460: characters 13-23
 			return $arr;
 		} else if (($x instanceof StringMap)) {
-			#/src/englishauction/EnglishAuction.hx:496: characters 13-41
+			#/src/englishauction/EnglishAuction.hx:463: characters 13-41
 			$map = $x;
-			#/src/englishauction/EnglishAuction.hx:497: characters 13-58
+			#/src/englishauction/EnglishAuction.hx:464: characters 13-58
 			$obj = MagLevObject::create();
-			#/src/englishauction/EnglishAuction.hx:498: characters 24-34
+			#/src/englishauction/EnglishAuction.hx:465: characters 24-34
 			$key = new NativeIndexedArrayIterator(array_values(array_map("strval", array_keys($map->data))));
 			while ($key->hasNext()) {
-				#/src/englishauction/EnglishAuction.hx:498: lines 498-500
+				#/src/englishauction/EnglishAuction.hx:465: lines 465-467
 				$key1 = $key->next();
-				#/src/englishauction/EnglishAuction.hx:499: characters 17-60
+				#/src/englishauction/EnglishAuction.hx:466: characters 17-60
 				$obj->set($key1, $this->convertToMagLev(($map->data[$key1] ?? null)));
 			}
-			#/src/englishauction/EnglishAuction.hx:501: characters 13-23
+			#/src/englishauction/EnglishAuction.hx:468: characters 13-23
 			return $obj;
 		} else if (\Reflect::isObject($x)) {
-			#/src/englishauction/EnglishAuction.hx:504: characters 13-58
+			#/src/englishauction/EnglishAuction.hx:471: characters 13-58
 			$obj = MagLevObject::create();
-			#/src/englishauction/EnglishAuction.hx:505: lines 505-508
+			#/src/englishauction/EnglishAuction.hx:472: lines 472-475
 			$_g = 0;
 			$_g1 = \Reflect::fields($x);
 			while ($_g < $_g1->length) {
-				#/src/englishauction/EnglishAuction.hx:505: characters 18-23
+				#/src/englishauction/EnglishAuction.hx:472: characters 18-23
 				$field = ($_g1->arr[$_g] ?? null);
-				#/src/englishauction/EnglishAuction.hx:505: lines 505-508
+				#/src/englishauction/EnglishAuction.hx:472: lines 472-475
 				++$_g;
-				#/src/englishauction/EnglishAuction.hx:506: characters 17-57
+				#/src/englishauction/EnglishAuction.hx:473: characters 17-57
 				$val = \Reflect::getProperty($x, $field);
-				#/src/englishauction/EnglishAuction.hx:507: characters 17-53
+				#/src/englishauction/EnglishAuction.hx:474: characters 17-53
 				$obj->set($field, $this->convertToMagLev($val));
 			}
-			#/src/englishauction/EnglishAuction.hx:509: characters 13-23
+			#/src/englishauction/EnglishAuction.hx:476: characters 13-23
 			return $obj;
 		} else {
-			#/src/englishauction/EnglishAuction.hx:511: characters 18-39
+			#/src/englishauction/EnglishAuction.hx:478: characters 18-39
 			$f = $x;
-			#/src/englishauction/EnglishAuction.hx:511: lines 511-517
+			#/src/englishauction/EnglishAuction.hx:478: lines 478-484
 			if (($f instanceof \Closure) || ($f instanceof HxClosure)) {
-				#/src/englishauction/EnglishAuction.hx:512: characters 13-49
+				#/src/englishauction/EnglishAuction.hx:479: characters 13-49
 				$f = $x;
-				#/src/englishauction/EnglishAuction.hx:513: characters 13-50
+				#/src/englishauction/EnglishAuction.hx:480: characters 13-50
 				return MagLevFunction::fromFunction($f);
 			} else {
-				#/src/englishauction/EnglishAuction.hx:516: characters 13-18
+				#/src/englishauction/EnglishAuction.hx:483: characters 13-18
 				throw Exception::thrown("convertToMagLev: unknown type");
 			}
 		}
@@ -238,7 +238,7 @@ class EnglishAuction {
 	 * @return void
 	 */
 	public function registerMyMethods () {
-		#/src/englishauction/EnglishAuction.hx:23: lines 23-417
+		#/src/englishauction/EnglishAuction.hx:23: lines 23-384
 		$_gthis = $this;
 		#/src/englishauction/EnglishAuction.hx:24: characters 3-25
 		$bus = $this->maglev;
@@ -266,695 +266,609 @@ class EnglishAuction {
 			#/src/englishauction/EnglishAuction.hx:37: characters 4-17
 			return $result;
 		}));
-		#/src/englishauction/EnglishAuction.hx:39: lines 39-63
-		$this->maglev->register("EnglishAuction.GetStart", MagLevFunction::fromFunction(function ($args) use (&$bus) {
-			#/src/englishauction/EnglishAuction.hx:40: characters 4-58
-			$id = Boot::typedCast(Boot::getClass(MagLevString::class), $args->get(0));
-			#/src/englishauction/EnglishAuction.hx:41: characters 4-50
-			$myargs = MagLevArray::create();
-			#/src/englishauction/EnglishAuction.hx:42: characters 4-66
-			$myargs->push(MagLevString::fromString("EnglishAuction.Auction"));
-			#/src/englishauction/EnglishAuction.hx:43: characters 4-52
-			$myargs->push(MagLevString::fromString("FindById"));
-			#/src/englishauction/EnglishAuction.hx:44: characters 4-37
-			$myarr = MagLevArray::create();
-			#/src/englishauction/EnglishAuction.hx:45: characters 4-18
-			$myarr->push($id);
-			#/src/englishauction/EnglishAuction.hx:46: characters 4-22
-			$myargs->push($myarr);
-			#/src/englishauction/EnglishAuction.hx:47: characters 4-63
-			$res = $bus->call("Persistence.Get", $myargs);
-			#/src/englishauction/EnglishAuction.hx:48: characters 4-33
-			if ($res->isError()) {
-				#/src/englishauction/EnglishAuction.hx:48: characters 23-33
-				return $res;
-			}
-			#/src/englishauction/EnglishAuction.hx:49: characters 4-51
-			$resobj = $res->getResult();
-			#/src/englishauction/EnglishAuction.hx:50: characters 4-24
-			$start = 0;
-			#/src/englishauction/EnglishAuction.hx:51: lines 51-60
-			if (($resobj->get("start") instanceof MagLevString)) {
-				#/src/englishauction/EnglishAuction.hx:52: characters 5-53
-				$y = Boot::typedCast(Boot::getClass(MagLevString::class), $resobj->get("start"));
-				#/src/englishauction/EnglishAuction.hx:53: characters 5-53
-				$start = \Date::fromString($y->getString())->getTime();
-			} else if (($resobj->get("start") instanceof MagLevNumber)) {
-				#/src/englishauction/EnglishAuction.hx:55: characters 5-53
-				$y = Boot::typedCast(Boot::getClass(MagLevNumber::class), $resobj->get("start"));
-				#/src/englishauction/EnglishAuction.hx:56: characters 5-25
-				$start = $y->getFloat();
-			} else {
-				#/src/englishauction/EnglishAuction.hx:58: characters 5-147
-				$error = MagLevError::create(0, "persistence getter did not return object with start as number or string", MagLevNull::create());
-				#/src/englishauction/EnglishAuction.hx:59: characters 5-41
-				return MagLevResult::fromError($error);
-			}
-			#/src/englishauction/EnglishAuction.hx:61: characters 4-29
-			$result = $start;
-			#/src/englishauction/EnglishAuction.hx:62: characters 4-66
-			return MagLevResult::fromResult(MagLevNumber::fromFloat($result));
-		}));
-		#/src/englishauction/EnglishAuction.hx:64: lines 64-88
-		$this->maglev->register("EnglishAuction.GetEnd", MagLevFunction::fromFunction(function ($args) use (&$bus) {
-			#/src/englishauction/EnglishAuction.hx:65: characters 4-58
-			$id = Boot::typedCast(Boot::getClass(MagLevString::class), $args->get(0));
-			#/src/englishauction/EnglishAuction.hx:66: characters 4-50
-			$myargs = MagLevArray::create();
-			#/src/englishauction/EnglishAuction.hx:67: characters 4-66
-			$myargs->push(MagLevString::fromString("EnglishAuction.Auction"));
-			#/src/englishauction/EnglishAuction.hx:68: characters 4-52
-			$myargs->push(MagLevString::fromString("FindById"));
-			#/src/englishauction/EnglishAuction.hx:69: characters 4-37
-			$myarr = MagLevArray::create();
-			#/src/englishauction/EnglishAuction.hx:70: characters 4-18
-			$myarr->push($id);
-			#/src/englishauction/EnglishAuction.hx:71: characters 4-22
-			$myargs->push($myarr);
-			#/src/englishauction/EnglishAuction.hx:72: characters 4-63
-			$res = $bus->call("Persistence.Get", $myargs);
-			#/src/englishauction/EnglishAuction.hx:73: characters 4-33
-			if ($res->isError()) {
-				#/src/englishauction/EnglishAuction.hx:73: characters 23-33
-				return $res;
-			}
-			#/src/englishauction/EnglishAuction.hx:74: characters 4-51
-			$resobj = $res->getResult();
-			#/src/englishauction/EnglishAuction.hx:75: characters 4-22
-			$end = 0;
-			#/src/englishauction/EnglishAuction.hx:76: lines 76-85
-			if (($resobj->get("end") instanceof MagLevString)) {
-				#/src/englishauction/EnglishAuction.hx:77: characters 5-51
-				$y = Boot::typedCast(Boot::getClass(MagLevString::class), $resobj->get("end"));
-				#/src/englishauction/EnglishAuction.hx:78: characters 5-51
-				$end = \Date::fromString($y->getString())->getTime();
-			} else if (($resobj->get("end") instanceof MagLevNumber)) {
-				#/src/englishauction/EnglishAuction.hx:80: characters 5-51
-				$y = Boot::typedCast(Boot::getClass(MagLevNumber::class), $resobj->get("end"));
-				#/src/englishauction/EnglishAuction.hx:81: characters 5-23
-				$end = $y->getFloat();
-			} else {
-				#/src/englishauction/EnglishAuction.hx:83: characters 5-145
-				$error = MagLevError::create(0, "persistence getter did not return object with end as number or string", MagLevNull::create());
-				#/src/englishauction/EnglishAuction.hx:84: characters 5-41
-				return MagLevResult::fromError($error);
-			}
-			#/src/englishauction/EnglishAuction.hx:86: characters 4-27
-			$result = $end;
-			#/src/englishauction/EnglishAuction.hx:87: characters 4-66
-			return MagLevResult::fromResult(MagLevNumber::fromFloat($result));
-		}));
-		#/src/englishauction/EnglishAuction.hx:89: lines 89-114
-		$this->maglev->register("EnglishAuction.HasStarted", MagLevFunction::fromFunction(function ($args) use (&$bus) {
-			#/src/englishauction/EnglishAuction.hx:90: characters 4-58
-			$id = Boot::typedCast(Boot::getClass(MagLevString::class), $args->get(0));
-			#/src/englishauction/EnglishAuction.hx:91: characters 4-50
-			$myargs = MagLevArray::create();
-			#/src/englishauction/EnglishAuction.hx:92: characters 4-66
-			$myargs->push(MagLevString::fromString("EnglishAuction.Auction"));
-			#/src/englishauction/EnglishAuction.hx:93: characters 4-52
-			$myargs->push(MagLevString::fromString("FindById"));
-			#/src/englishauction/EnglishAuction.hx:94: characters 4-37
-			$myarr = MagLevArray::create();
-			#/src/englishauction/EnglishAuction.hx:95: characters 4-18
-			$myarr->push($id);
-			#/src/englishauction/EnglishAuction.hx:96: characters 4-22
-			$myargs->push($myarr);
-			#/src/englishauction/EnglishAuction.hx:97: characters 4-63
-			$res = $bus->call("Persistence.Get", $myargs);
-			#/src/englishauction/EnglishAuction.hx:98: characters 4-33
-			if ($res->isError()) {
-				#/src/englishauction/EnglishAuction.hx:98: characters 23-33
-				return $res;
-			}
-			#/src/englishauction/EnglishAuction.hx:99: characters 4-51
-			$resobj = $res->getResult();
-			#/src/englishauction/EnglishAuction.hx:100: characters 4-24
-			$start = 0;
-			#/src/englishauction/EnglishAuction.hx:101: lines 101-110
-			if (($resobj->get("start") instanceof MagLevString)) {
-				#/src/englishauction/EnglishAuction.hx:102: characters 5-53
-				$y = Boot::typedCast(Boot::getClass(MagLevString::class), $resobj->get("start"));
-				#/src/englishauction/EnglishAuction.hx:103: characters 5-53
-				$start = \Date::fromString($y->getString())->getTime();
-			} else if (($resobj->get("start") instanceof MagLevNumber)) {
-				#/src/englishauction/EnglishAuction.hx:105: characters 5-53
-				$y = Boot::typedCast(Boot::getClass(MagLevNumber::class), $resobj->get("start"));
-				#/src/englishauction/EnglishAuction.hx:106: characters 5-25
-				$start = $y->getFloat();
-			} else {
-				#/src/englishauction/EnglishAuction.hx:108: characters 5-147
-				$error = MagLevError::create(0, "persistence getter did not return object with start as number or string", MagLevNull::create());
-				#/src/englishauction/EnglishAuction.hx:109: characters 5-41
-				return MagLevResult::fromError($error);
-			}
-			#/src/englishauction/EnglishAuction.hx:111: characters 4-41
-			$now = \Date::now()->getTime();
-			#/src/englishauction/EnglishAuction.hx:112: characters 4-35
-			$result = $start <= $now;
-			#/src/englishauction/EnglishAuction.hx:113: characters 4-66
-			return MagLevResult::fromResult(MagLevBoolean::fromBool($result));
-		}));
-		#/src/englishauction/EnglishAuction.hx:115: lines 115-148
-		$this->maglev->register("EnglishAuction.HasEnded", MagLevFunction::fromFunction(function ($args) use (&$bus) {
-			#/src/englishauction/EnglishAuction.hx:116: characters 4-58
-			$id = Boot::typedCast(Boot::getClass(MagLevString::class), $args->get(0));
-			#/src/englishauction/EnglishAuction.hx:117: characters 4-50
-			$myargs = MagLevArray::create();
-			#/src/englishauction/EnglishAuction.hx:118: characters 4-66
-			$myargs->push(MagLevString::fromString("EnglishAuction.Auction"));
-			#/src/englishauction/EnglishAuction.hx:119: characters 4-52
-			$myargs->push(MagLevString::fromString("FindById"));
-			#/src/englishauction/EnglishAuction.hx:120: characters 4-37
-			$myarr = MagLevArray::create();
-			#/src/englishauction/EnglishAuction.hx:121: characters 4-18
-			$myarr->push($id);
-			#/src/englishauction/EnglishAuction.hx:122: characters 4-22
-			$myargs->push($myarr);
-			#/src/englishauction/EnglishAuction.hx:123: characters 4-56
-			$myret = MagLevResult::createAsync();
-			#/src/englishauction/EnglishAuction.hx:124: characters 4-63
-			$res = $bus->call("Persistence.Get", $myargs);
-			#/src/englishauction/EnglishAuction.hx:125: lines 125-128
-			$res->onError(function ($err) use (&$myret) {
-				#/src/englishauction/EnglishAuction.hx:126: characters 5-24
-				$myret->setError($err);
-				#/src/englishauction/EnglishAuction.hx:127: characters 5-56
-				return MagLevResult::fromResult(MagLevNull::create());
-			});
-			#/src/englishauction/EnglishAuction.hx:129: lines 129-146
-			$res->onResult(function ($resobj) use (&$myret, &$res) {
-				#/src/englishauction/EnglishAuction.hx:130: characters 5-52
-				$resobj = $res->getResult();
-				#/src/englishauction/EnglishAuction.hx:131: characters 5-23
-				$end = 0;
-				#/src/englishauction/EnglishAuction.hx:132: lines 132-141
-				if (($resobj->get("end") instanceof MagLevString)) {
-					#/src/englishauction/EnglishAuction.hx:133: characters 6-52
-					$y = Boot::typedCast(Boot::getClass(MagLevString::class), $resobj->get("end"));
-					#/src/englishauction/EnglishAuction.hx:134: characters 6-52
-					$end = \Date::fromString($y->getString())->getTime();
-				} else if (($resobj->get("end") instanceof MagLevNumber)) {
-					#/src/englishauction/EnglishAuction.hx:136: characters 6-52
-					$y = Boot::typedCast(Boot::getClass(MagLevNumber::class), $resobj->get("end"));
-					#/src/englishauction/EnglishAuction.hx:137: characters 6-24
-					$end = $y->getFloat();
+		#/src/englishauction/EnglishAuction.hx:39: lines 39-53
+		$this->maglev->register("EnglishAuction.GetStart", MagLevFunction::fromFunction(function ($args) use (&$_gthis) {
+			#/src/englishauction/EnglishAuction.hx:40: characters 4-71
+			$auctionId = (Boot::typedCast(Boot::getClass(MagLevString::class), $args->get(0)))->getString();
+			#/src/englishauction/EnglishAuction.hx:41: characters 4-57
+			$result = MagLevResult::createAsync();
+			#/src/englishauction/EnglishAuction.hx:42: lines 42-51
+			$_gthis->auctionRepo->FindById($auctionId, function ($auction) use (&$result) {
+				#/src/englishauction/EnglishAuction.hx:43: lines 43-50
+				if ($auction === null) {
+					#/src/englishauction/EnglishAuction.hx:44: characters 6-94
+					$error = MagLevError::create(0, "auction not found", MagLevNull::create());
+					#/src/englishauction/EnglishAuction.hx:45: characters 6-28
+					$result->setError($error);
 				} else {
-					#/src/englishauction/EnglishAuction.hx:139: characters 6-146
-					$error = MagLevError::create(0, "persistence getter did not return object with end as number or string", MagLevNull::create());
-					#/src/englishauction/EnglishAuction.hx:140: characters 6-42
-					return MagLevResult::fromError($error);
+					#/src/englishauction/EnglishAuction.hx:47: characters 6-36
+					$start = $auction->start;
+					#/src/englishauction/EnglishAuction.hx:48: characters 6-46
+					$ret = MagLevNumber::fromFloat($start);
+					#/src/englishauction/EnglishAuction.hx:49: characters 6-27
+					$result->setResult($ret);
 				}
-				#/src/englishauction/EnglishAuction.hx:142: characters 5-42
-				$now = \Date::now()->getTime();
-				#/src/englishauction/EnglishAuction.hx:143: characters 5-32
-				$result = $now > $end;
-				#/src/englishauction/EnglishAuction.hx:144: characters 5-52
-				$myret->setResult(MagLevBoolean::fromBool($result));
-				#/src/englishauction/EnglishAuction.hx:145: characters 5-56
-				return MagLevResult::fromResult(MagLevNull::create());
 			});
-			#/src/englishauction/EnglishAuction.hx:147: characters 4-16
-			return $myret;
+			#/src/englishauction/EnglishAuction.hx:52: characters 4-17
+			return $result;
 		}));
-		#/src/englishauction/EnglishAuction.hx:149: lines 149-165
-		$this->maglev->register("EnglishAuction.Bid", MagLevFunction::fromFunction(function ($args) use (&$bus) {
-			#/src/englishauction/EnglishAuction.hx:150: characters 4-65
+		#/src/englishauction/EnglishAuction.hx:54: lines 54-68
+		$this->maglev->register("EnglishAuction.GetEnd", MagLevFunction::fromFunction(function ($args) use (&$_gthis) {
+			#/src/englishauction/EnglishAuction.hx:55: characters 4-71
+			$auctionId = (Boot::typedCast(Boot::getClass(MagLevString::class), $args->get(0)))->getString();
+			#/src/englishauction/EnglishAuction.hx:56: characters 4-57
+			$result = MagLevResult::createAsync();
+			#/src/englishauction/EnglishAuction.hx:57: lines 57-66
+			$_gthis->auctionRepo->FindById($auctionId, function ($auction) use (&$result) {
+				#/src/englishauction/EnglishAuction.hx:58: lines 58-65
+				if ($auction === null) {
+					#/src/englishauction/EnglishAuction.hx:59: characters 6-94
+					$error = MagLevError::create(0, "auction not found", MagLevNull::create());
+					#/src/englishauction/EnglishAuction.hx:60: characters 6-28
+					$result->setError($error);
+				} else {
+					#/src/englishauction/EnglishAuction.hx:62: characters 6-32
+					$end = $auction->end;
+					#/src/englishauction/EnglishAuction.hx:63: characters 6-44
+					$ret = MagLevNumber::fromFloat($end);
+					#/src/englishauction/EnglishAuction.hx:64: characters 6-27
+					$result->setResult($ret);
+				}
+			});
+			#/src/englishauction/EnglishAuction.hx:67: characters 4-17
+			return $result;
+		}));
+		#/src/englishauction/EnglishAuction.hx:69: lines 69-85
+		$this->maglev->register("EnglishAuction.HasStarted", MagLevFunction::fromFunction(function ($args) use (&$_gthis) {
+			#/src/englishauction/EnglishAuction.hx:70: characters 4-71
+			$auctionId = (Boot::typedCast(Boot::getClass(MagLevString::class), $args->get(0)))->getString();
+			#/src/englishauction/EnglishAuction.hx:71: characters 4-57
+			$result = MagLevResult::createAsync();
+			#/src/englishauction/EnglishAuction.hx:72: lines 72-83
+			$_gthis->auctionRepo->FindById($auctionId, function ($auction) use (&$result) {
+				#/src/englishauction/EnglishAuction.hx:73: lines 73-82
+				if ($auction === null) {
+					#/src/englishauction/EnglishAuction.hx:74: characters 6-94
+					$error = MagLevError::create(0, "auction not found", MagLevNull::create());
+					#/src/englishauction/EnglishAuction.hx:75: characters 6-28
+					$result->setError($error);
+				} else {
+					#/src/englishauction/EnglishAuction.hx:77: characters 6-38
+					$start = $auction->start;
+					#/src/englishauction/EnglishAuction.hx:78: characters 6-50
+					$now = \Date::now()->getTime() / 1000;
+					#/src/englishauction/EnglishAuction.hx:79: characters 6-38
+					$started = $start <= $now;
+					#/src/englishauction/EnglishAuction.hx:80: characters 6-48
+					$ret = MagLevBoolean::fromBool($started);
+					#/src/englishauction/EnglishAuction.hx:81: characters 6-27
+					$result->setResult($ret);
+				}
+			});
+			#/src/englishauction/EnglishAuction.hx:84: characters 4-17
+			return $result;
+		}));
+		#/src/englishauction/EnglishAuction.hx:86: lines 86-102
+		$this->maglev->register("EnglishAuction.HasEnded", MagLevFunction::fromFunction(function ($args) use (&$_gthis) {
+			#/src/englishauction/EnglishAuction.hx:87: characters 4-71
+			$auctionId = (Boot::typedCast(Boot::getClass(MagLevString::class), $args->get(0)))->getString();
+			#/src/englishauction/EnglishAuction.hx:88: characters 4-57
+			$result = MagLevResult::createAsync();
+			#/src/englishauction/EnglishAuction.hx:89: lines 89-100
+			$_gthis->auctionRepo->FindById($auctionId, function ($auction) use (&$result) {
+				#/src/englishauction/EnglishAuction.hx:90: lines 90-99
+				if ($auction === null) {
+					#/src/englishauction/EnglishAuction.hx:91: characters 6-94
+					$error = MagLevError::create(0, "auction not found", MagLevNull::create());
+					#/src/englishauction/EnglishAuction.hx:92: characters 6-28
+					$result->setError($error);
+				} else {
+					#/src/englishauction/EnglishAuction.hx:94: characters 6-34
+					$end = $auction->end;
+					#/src/englishauction/EnglishAuction.hx:95: characters 6-50
+					$now = \Date::now()->getTime() / 1000;
+					#/src/englishauction/EnglishAuction.hx:96: characters 6-33
+					$ended = $now > $end;
+					#/src/englishauction/EnglishAuction.hx:97: characters 6-46
+					$ret = MagLevBoolean::fromBool($ended);
+					#/src/englishauction/EnglishAuction.hx:98: characters 6-27
+					$result->setResult($ret);
+				}
+			});
+			#/src/englishauction/EnglishAuction.hx:101: characters 4-17
+			return $result;
+		}));
+		#/src/englishauction/EnglishAuction.hx:103: lines 103-116
+		$this->maglev->register("EnglishAuction.Bid", MagLevFunction::fromFunction(function ($args) use (&$_gthis) {
+			#/src/englishauction/EnglishAuction.hx:104: characters 4-65
 			$auctionId = Boot::typedCast(Boot::getClass(MagLevString::class), $args->get(0));
-			#/src/englishauction/EnglishAuction.hx:151: characters 4-62
+			#/src/englishauction/EnglishAuction.hx:105: characters 4-62
 			$userId = Boot::typedCast(Boot::getClass(MagLevString::class), $args->get(1));
-			#/src/englishauction/EnglishAuction.hx:152: characters 4-61
+			#/src/englishauction/EnglishAuction.hx:106: characters 4-61
 			$price = Boot::typedCast(Boot::getClass(MagLevNumber::class), $args->get(2));
-			#/src/englishauction/EnglishAuction.hx:153: characters 4-50
-			$data = MagLevObject::create();
-			#/src/englishauction/EnglishAuction.hx:154: characters 4-36
-			$data->set("auctionId", $auctionId);
-			#/src/englishauction/EnglishAuction.hx:155: characters 4-30
-			$data->set("userId", $userId);
-			#/src/englishauction/EnglishAuction.hx:156: characters 4-28
-			$data->set("price", $price);
-			#/src/englishauction/EnglishAuction.hx:157: characters 4-48
-			$args = MagLevArray::create();
-			#/src/englishauction/EnglishAuction.hx:158: characters 4-60
-			$args->push(MagLevString::fromString("EnglishAuction.Bid"));
-			#/src/englishauction/EnglishAuction.hx:159: characters 4-45
-			$args->push(MagLevString::fromString("New"));
-			#/src/englishauction/EnglishAuction.hx:160: characters 4-35
-			$arr = MagLevArray::create();
-			#/src/englishauction/EnglishAuction.hx:161: characters 4-18
-			$arr->push($data);
-			#/src/englishauction/EnglishAuction.hx:162: characters 4-18
-			$args->push($arr);
-			#/src/englishauction/EnglishAuction.hx:163: characters 4-40
-			$bus->call("Persistence.Mutate", $args);
-			#/src/englishauction/EnglishAuction.hx:164: characters 4-64
-			return MagLevResult::fromResult(MagLevBoolean::fromBool(true));
+			#/src/englishauction/EnglishAuction.hx:107: characters 4-57
+			$result = MagLevResult::createAsync();
+			#/src/englishauction/EnglishAuction.hx:108: characters 4-40
+			$model = new BidModel();
+			#/src/englishauction/EnglishAuction.hx:109: characters 4-43
+			$model->auctionId = $auctionId->getString();
+			#/src/englishauction/EnglishAuction.hx:110: characters 4-37
+			$model->userId = $userId->getString();
+			#/src/englishauction/EnglishAuction.hx:111: characters 4-34
+			$model->price = $price->getFloat();
+			#/src/englishauction/EnglishAuction.hx:112: lines 112-114
+			$_gthis->bidRepo->Add($model, function ($id) use (&$result) {
+				#/src/englishauction/EnglishAuction.hx:113: characters 5-50
+				$result->setResult(MagLevString::fromString($id));
+			});
+			#/src/englishauction/EnglishAuction.hx:115: characters 4-17
+			return $result;
 		}));
-		#/src/englishauction/EnglishAuction.hx:166: lines 166-194
+		#/src/englishauction/EnglishAuction.hx:117: lines 117-151
 		$this->maglev->register("EnglishAuction.GetHighestBidder", MagLevFunction::fromFunction(function ($args) use (&$bus) {
-			#/src/englishauction/EnglishAuction.hx:167: characters 4-65
+			#/src/englishauction/EnglishAuction.hx:118: characters 4-65
 			$auctionId = Boot::typedCast(Boot::getClass(MagLevString::class), $args->get(0));
-			#/src/englishauction/EnglishAuction.hx:168: characters 4-50
+			#/src/englishauction/EnglishAuction.hx:119: characters 4-50
 			$myargs = MagLevArray::create();
-			#/src/englishauction/EnglishAuction.hx:169: characters 4-26
+			#/src/englishauction/EnglishAuction.hx:120: characters 4-26
 			$myargs->push($auctionId);
-			#/src/englishauction/EnglishAuction.hx:170: characters 4-40
+			#/src/englishauction/EnglishAuction.hx:121: characters 4-40
 			$myargs->push(MagLevNumber::fromInt(1));
-			#/src/englishauction/EnglishAuction.hx:171: characters 4-39
+			#/src/englishauction/EnglishAuction.hx:122: characters 4-39
 			$myargs2 = MagLevArray::create();
-			#/src/englishauction/EnglishAuction.hx:172: characters 4-63
+			#/src/englishauction/EnglishAuction.hx:123: characters 4-63
 			$myargs2->push(MagLevString::fromString("EnglishAuction.Bid"));
-			#/src/englishauction/EnglishAuction.hx:173: characters 4-73
+			#/src/englishauction/EnglishAuction.hx:124: characters 4-73
 			$myargs2->push(MagLevString::fromString("FindByHighestPriceForAuction"));
-			#/src/englishauction/EnglishAuction.hx:174: characters 4-24
+			#/src/englishauction/EnglishAuction.hx:125: characters 4-24
 			$myargs2->push($myargs);
-			#/src/englishauction/EnglishAuction.hx:175: characters 4-64
+			#/src/englishauction/EnglishAuction.hx:126: characters 4-64
 			$ret = $bus->call("Persistence.Get", $myargs2);
-			#/src/englishauction/EnglishAuction.hx:176: characters 4-33
-			if ($ret->isError()) {
-				#/src/englishauction/EnglishAuction.hx:176: characters 23-33
-				return $ret;
-			}
-			#/src/englishauction/EnglishAuction.hx:177: characters 4-40
-			$res = $ret->getResult();
-			#/src/englishauction/EnglishAuction.hx:178: lines 178-193
-			if (($res instanceof MagLevArray)) {
-				#/src/englishauction/EnglishAuction.hx:179: characters 5-41
-				$resarr = Boot::typedCast(Boot::getClass(MagLevArray::class), $res);
-				#/src/englishauction/EnglishAuction.hx:180: lines 180-188
-				if ($resarr->size() > 0) {
-					#/src/englishauction/EnglishAuction.hx:181: characters 6-48
-					$row = $resarr->get(0);
-					#/src/englishauction/EnglishAuction.hx:182: characters 6-52
-					$row2 = MagLevObject::create();
-					#/src/englishauction/EnglishAuction.hx:183: characters 6-43
-					$row2->set("userId", $row->get("userId"));
-					#/src/englishauction/EnglishAuction.hx:184: characters 6-41
-					$row2->set("price", $row->get("price"));
-					#/src/englishauction/EnglishAuction.hx:185: characters 6-42
-					return MagLevResult::fromResult($row2);
-				} else {
-					#/src/englishauction/EnglishAuction.hx:187: characters 6-57
-					return MagLevResult::fromResult(MagLevNull::create());
-				}
-			} else {
-				#/src/englishauction/EnglishAuction.hx:191: characters 5-115
-				$error = MagLevError::create(0, "persistence getter did not return array", MagLevNull::create());
-				#/src/englishauction/EnglishAuction.hx:192: characters 5-41
-				return MagLevResult::fromError($error);
-			}
-		}));
-		#/src/englishauction/EnglishAuction.hx:195: lines 195-226
-		$this->maglev->register("EnglishAuction.GetHighestBids", MagLevFunction::fromFunction(function ($args) use (&$bus) {
-			#/src/englishauction/EnglishAuction.hx:196: characters 4-65
-			$auctionId = Boot::typedCast(Boot::getClass(MagLevString::class), $args->get(0));
-			#/src/englishauction/EnglishAuction.hx:197: characters 4-63
-			$numBids = Boot::typedCast(Boot::getClass(MagLevNumber::class), $args->get(1));
-			#/src/englishauction/EnglishAuction.hx:198: characters 4-50
-			$myargs = MagLevArray::create();
-			#/src/englishauction/EnglishAuction.hx:199: characters 4-26
-			$myargs->push($auctionId);
-			#/src/englishauction/EnglishAuction.hx:200: characters 4-24
-			$myargs->push($numBids);
-			#/src/englishauction/EnglishAuction.hx:201: characters 4-39
-			$myargs2 = MagLevArray::create();
-			#/src/englishauction/EnglishAuction.hx:202: characters 4-63
-			$myargs2->push(MagLevString::fromString("EnglishAuction.Bid"));
-			#/src/englishauction/EnglishAuction.hx:203: characters 4-73
-			$myargs2->push(MagLevString::fromString("FindByHighestPriceForAuction"));
-			#/src/englishauction/EnglishAuction.hx:204: characters 4-24
-			$myargs2->push($myargs);
-			#/src/englishauction/EnglishAuction.hx:205: characters 4-64
-			$ret = $bus->call("Persistence.Get", $myargs2);
-			#/src/englishauction/EnglishAuction.hx:206: characters 4-33
-			if ($ret->isError()) {
-				#/src/englishauction/EnglishAuction.hx:206: characters 23-33
-				return $ret;
-			}
-			#/src/englishauction/EnglishAuction.hx:207: characters 4-40
-			$res = $ret->getResult();
-			#/src/englishauction/EnglishAuction.hx:208: characters 4-36
-			$bids = MagLevArray::create();
-			#/src/englishauction/EnglishAuction.hx:209: lines 209-225
-			if (($res instanceof MagLevArray)) {
-				#/src/englishauction/EnglishAuction.hx:210: characters 5-41
-				$resarr = Boot::typedCast(Boot::getClass(MagLevArray::class), $res);
-				#/src/englishauction/EnglishAuction.hx:211: characters 5-15
-				$i = 0;
-				#/src/englishauction/EnglishAuction.hx:212: lines 212-219
-				while ($i < $resarr->size()) {
-					#/src/englishauction/EnglishAuction.hx:213: characters 6-48
-					$row = $resarr->get($i);
-					#/src/englishauction/EnglishAuction.hx:214: characters 6-52
-					$row2 = MagLevObject::create();
-					#/src/englishauction/EnglishAuction.hx:215: characters 6-43
-					$row2->set("userId", $row->get("userId"));
-					#/src/englishauction/EnglishAuction.hx:216: characters 6-41
-					$row2->set("price", $row->get("price"));
-					#/src/englishauction/EnglishAuction.hx:217: characters 6-21
-					$bids->push($row2);
-					#/src/englishauction/EnglishAuction.hx:218: characters 6-9
-					++$i;
-				}
-				#/src/englishauction/EnglishAuction.hx:220: characters 5-41
-				return MagLevResult::fromResult($bids);
-			} else {
-				#/src/englishauction/EnglishAuction.hx:223: characters 5-115
-				$error = MagLevError::create(0, "persistence getter did not return array", MagLevNull::create());
-				#/src/englishauction/EnglishAuction.hx:224: characters 5-41
-				return MagLevResult::fromError($error);
-			}
-		}));
-		#/src/englishauction/EnglishAuction.hx:227: lines 227-231
-		$this->maglev->register("EnglishAuction.GetNumberOfBids", MagLevFunction::fromFunction(function ($args) use (&$_gthis) {
-			#/src/englishauction/EnglishAuction.hx:228: characters 4-71
-			$auctionId = (Boot::typedCast(Boot::getClass(MagLevString::class), $args->get(0)))->getString();
-			#/src/englishauction/EnglishAuction.hx:229: characters 4-62
-			$numBids = $_gthis->bidRepo->GetNumberOfBids($auctionId);
-			#/src/englishauction/EnglishAuction.hx:230: characters 4-65
-			return MagLevResult::fromResult(MagLevNumber::fromInt($numBids));
-		}));
-		#/src/englishauction/EnglishAuction.hx:232: lines 232-246
-		$this->maglev->register("EnglishAuction.GetPriceIncrement", MagLevFunction::fromFunction(function ($args) use (&$_gthis) {
-			#/src/englishauction/EnglishAuction.hx:233: characters 4-71
-			$auctionId = (Boot::typedCast(Boot::getClass(MagLevString::class), $args->get(0)))->getString();
-			#/src/englishauction/EnglishAuction.hx:234: characters 4-57
-			$result = MagLevResult::createAsync();
-			#/src/englishauction/EnglishAuction.hx:235: lines 235-244
-			$_gthis->auctionRepo->FindById($auctionId, function ($auction) use (&$result) {
-				#/src/englishauction/EnglishAuction.hx:236: lines 236-243
-				if ($auction === null) {
-					#/src/englishauction/EnglishAuction.hx:237: characters 6-94
-					$error = MagLevError::create(0, "auction not found", MagLevNull::create());
-					#/src/englishauction/EnglishAuction.hx:238: characters 6-28
-					$result->setError($error);
-				} else {
-					#/src/englishauction/EnglishAuction.hx:240: characters 6-56
-					$priceIncrement = $auction->priceIncrement;
-					#/src/englishauction/EnglishAuction.hx:241: characters 6-55
-					$ret = MagLevNumber::fromFloat($priceIncrement);
-					#/src/englishauction/EnglishAuction.hx:242: characters 6-27
-					$result->setResult($ret);
-				}
+			#/src/englishauction/EnglishAuction.hx:127: characters 4-59
+			$myresult = MagLevResult::createAsync();
+			#/src/englishauction/EnglishAuction.hx:128: lines 128-130
+			$ret->onError(function ($error) {
+				#/src/englishauction/EnglishAuction.hx:129: characters 5-10
+				throw Exception::thrown($error->getMessage());
 			});
-			#/src/englishauction/EnglishAuction.hx:245: characters 4-17
-			return $result;
-		}));
-		#/src/englishauction/EnglishAuction.hx:247: lines 247-261
-		$this->maglev->register("EnglishAuction.GetPriceIncrement", MagLevFunction::fromFunction(function ($args) use (&$_gthis) {
-			#/src/englishauction/EnglishAuction.hx:248: characters 4-71
-			$auctionId = (Boot::typedCast(Boot::getClass(MagLevString::class), $args->get(0)))->getString();
-			#/src/englishauction/EnglishAuction.hx:249: characters 4-57
-			$result = MagLevResult::createAsync();
-			#/src/englishauction/EnglishAuction.hx:250: lines 250-259
-			$_gthis->auctionRepo->FindById($auctionId, function ($auction) use (&$result) {
-				#/src/englishauction/EnglishAuction.hx:251: lines 251-258
-				if ($auction === null) {
-					#/src/englishauction/EnglishAuction.hx:252: characters 6-94
-					$error = MagLevError::create(0, "auction not found", MagLevNull::create());
-					#/src/englishauction/EnglishAuction.hx:253: characters 6-28
-					$result->setError($error);
-				} else {
-					#/src/englishauction/EnglishAuction.hx:255: characters 6-56
-					$priceIncrement = $auction->priceIncrement;
-					#/src/englishauction/EnglishAuction.hx:256: characters 6-55
-					$ret = MagLevNumber::fromFloat($priceIncrement);
-					#/src/englishauction/EnglishAuction.hx:257: characters 6-27
-					$result->setResult($ret);
-				}
-			});
-			#/src/englishauction/EnglishAuction.hx:260: characters 4-17
-			return $result;
-		}));
-		#/src/englishauction/EnglishAuction.hx:262: lines 262-276
-		$this->maglev->register("EnglishAuction.GetReservePrice", MagLevFunction::fromFunction(function ($args) use (&$_gthis) {
-			#/src/englishauction/EnglishAuction.hx:263: characters 4-71
-			$auctionId = (Boot::typedCast(Boot::getClass(MagLevString::class), $args->get(0)))->getString();
-			#/src/englishauction/EnglishAuction.hx:264: characters 4-57
-			$result = MagLevResult::createAsync();
-			#/src/englishauction/EnglishAuction.hx:265: lines 265-274
-			$_gthis->auctionRepo->FindById($auctionId, function ($auction) use (&$result) {
-				#/src/englishauction/EnglishAuction.hx:266: lines 266-273
-				if ($auction === null) {
-					#/src/englishauction/EnglishAuction.hx:267: characters 6-94
-					$error = MagLevError::create(0, "auction not found", MagLevNull::create());
-					#/src/englishauction/EnglishAuction.hx:268: characters 6-28
-					$result->setError($error);
-				} else {
-					#/src/englishauction/EnglishAuction.hx:270: characters 6-52
-					$reservePrice = $auction->reservePrice;
-					#/src/englishauction/EnglishAuction.hx:271: characters 6-53
-					$ret = MagLevNumber::fromFloat($reservePrice);
-					#/src/englishauction/EnglishAuction.hx:272: characters 6-27
-					$result->setResult($ret);
-				}
-			});
-			#/src/englishauction/EnglishAuction.hx:275: characters 4-17
-			return $result;
-		}));
-		#/src/englishauction/EnglishAuction.hx:277: lines 277-291
-		$this->maglev->register("EnglishAuction.GetStartingPrice", MagLevFunction::fromFunction(function ($args) use (&$_gthis) {
-			#/src/englishauction/EnglishAuction.hx:278: characters 4-71
-			$auctionId = (Boot::typedCast(Boot::getClass(MagLevString::class), $args->get(0)))->getString();
-			#/src/englishauction/EnglishAuction.hx:279: characters 4-57
-			$result = MagLevResult::createAsync();
-			#/src/englishauction/EnglishAuction.hx:280: lines 280-289
-			$_gthis->auctionRepo->FindById($auctionId, function ($auction) use (&$result) {
-				#/src/englishauction/EnglishAuction.hx:281: lines 281-288
-				if ($auction === null) {
-					#/src/englishauction/EnglishAuction.hx:282: characters 6-94
-					$error = MagLevError::create(0, "auction not found", MagLevNull::create());
-					#/src/englishauction/EnglishAuction.hx:283: characters 6-28
-					$result->setError($error);
-				} else {
-					#/src/englishauction/EnglishAuction.hx:285: characters 6-54
-					$startingPrice = $auction->startingPrice;
-					#/src/englishauction/EnglishAuction.hx:286: characters 6-54
-					$ret = MagLevNumber::fromFloat($startingPrice);
-					#/src/englishauction/EnglishAuction.hx:287: characters 6-27
-					$result->setResult($ret);
-				}
-			});
-			#/src/englishauction/EnglishAuction.hx:290: characters 4-17
-			return $result;
-		}));
-		#/src/englishauction/EnglishAuction.hx:292: lines 292-315
-		$this->maglev->register("EnglishAuction.CalcMinimumBid", MagLevFunction::fromFunction(function ($args) use (&$_gthis) {
-			#/src/englishauction/EnglishAuction.hx:293: characters 4-71
-			$auctionId = (Boot::typedCast(Boot::getClass(MagLevString::class), $args->get(0)))->getString();
-			#/src/englishauction/EnglishAuction.hx:294: characters 4-57
-			$result = MagLevResult::createAsync();
-			#/src/englishauction/EnglishAuction.hx:295: lines 295-313
-			$_gthis->auctionRepo->FindById($auctionId, function ($auction) use (&$_gthis, &$result, &$auctionId) {
-				#/src/englishauction/EnglishAuction.hx:296: lines 296-312
-				if ($auction === null) {
-					#/src/englishauction/EnglishAuction.hx:297: characters 6-94
-					$error = MagLevError::create(0, "auction not found", MagLevNull::create());
-					#/src/englishauction/EnglishAuction.hx:298: characters 6-28
-					$result->setError($error);
-				} else {
-					#/src/englishauction/EnglishAuction.hx:300: characters 6-31
-					$highestBid = 0;
-					#/src/englishauction/EnglishAuction.hx:301: characters 6-59
-					$bids = $_gthis->bidRepo->GetHighestBids($auctionId, 1);
-					#/src/englishauction/EnglishAuction.hx:302: lines 302-304
-					if ($bids->length > 0) {
-						#/src/englishauction/EnglishAuction.hx:303: characters 7-34
-						$highestBid = ($bids->arr[0] ?? null)->amount;
+			#/src/englishauction/EnglishAuction.hx:131: lines 131-149
+			$ret->onResult(function ($res) use (&$myresult) {
+				#/src/englishauction/EnglishAuction.hx:132: lines 132-147
+				if (($res instanceof MagLevArray)) {
+					#/src/englishauction/EnglishAuction.hx:133: characters 6-42
+					$resarr = Boot::typedCast(Boot::getClass(MagLevArray::class), $res);
+					#/src/englishauction/EnglishAuction.hx:134: lines 134-142
+					if ($resarr->size() > 0) {
+						#/src/englishauction/EnglishAuction.hx:135: characters 7-49
+						$row = $resarr->get(0);
+						#/src/englishauction/EnglishAuction.hx:136: characters 7-53
+						$row2 = MagLevObject::create();
+						#/src/englishauction/EnglishAuction.hx:137: characters 7-44
+						$row2->set("userId", $row->get("userId"));
+						#/src/englishauction/EnglishAuction.hx:138: characters 7-42
+						$row2->set("price", $row->get("price"));
+						#/src/englishauction/EnglishAuction.hx:139: characters 7-31
+						$myresult->setResult($row2);
+					} else {
+						#/src/englishauction/EnglishAuction.hx:141: characters 7-46
+						$myresult->setResult(MagLevNull::create());
 					}
-					#/src/englishauction/EnglishAuction.hx:306: characters 6-30
-					$minBid = 0.00;
-					#/src/englishauction/EnglishAuction.hx:307: characters 15-68
-					$b = $highestBid + $auction->priceIncrement;
-					$minBid = (is_nan($minBid) || is_nan($b) ? \Math::$NaN : max($minBid, $b));
-					#/src/englishauction/EnglishAuction.hx:308: characters 15-54
-					$b = $auction->startingPrice;
-					$minBid = (is_nan($minBid) || is_nan($b) ? \Math::$NaN : max($minBid, $b));
-					#/src/englishauction/EnglishAuction.hx:310: characters 6-47
-					$ret = MagLevNumber::fromFloat($minBid);
-					#/src/englishauction/EnglishAuction.hx:311: characters 6-27
+				} else {
+					#/src/englishauction/EnglishAuction.hx:145: characters 6-116
+					$error = MagLevError::create(0, "persistence getter did not return array", MagLevNull::create());
+					#/src/englishauction/EnglishAuction.hx:146: characters 6-30
+					$myresult->setError($error);
+				}
+				#/src/englishauction/EnglishAuction.hx:148: characters 5-56
+				return MagLevResult::fromResult(MagLevNull::create());
+			});
+			#/src/englishauction/EnglishAuction.hx:150: characters 4-19
+			return $myresult;
+		}));
+		#/src/englishauction/EnglishAuction.hx:152: lines 152-189
+		$this->maglev->register("EnglishAuction.GetHighestBids", MagLevFunction::fromFunction(function ($args) use (&$bus) {
+			#/src/englishauction/EnglishAuction.hx:153: characters 4-65
+			$auctionId = Boot::typedCast(Boot::getClass(MagLevString::class), $args->get(0));
+			#/src/englishauction/EnglishAuction.hx:154: characters 4-63
+			$numBids = Boot::typedCast(Boot::getClass(MagLevNumber::class), $args->get(1));
+			#/src/englishauction/EnglishAuction.hx:155: characters 4-50
+			$myargs = MagLevArray::create();
+			#/src/englishauction/EnglishAuction.hx:156: characters 4-26
+			$myargs->push($auctionId);
+			#/src/englishauction/EnglishAuction.hx:157: characters 4-24
+			$myargs->push($numBids);
+			#/src/englishauction/EnglishAuction.hx:158: characters 4-39
+			$myargs2 = MagLevArray::create();
+			#/src/englishauction/EnglishAuction.hx:159: characters 4-63
+			$myargs2->push(MagLevString::fromString("EnglishAuction.Bid"));
+			#/src/englishauction/EnglishAuction.hx:160: characters 4-73
+			$myargs2->push(MagLevString::fromString("FindByHighestPriceForAuction"));
+			#/src/englishauction/EnglishAuction.hx:161: characters 4-24
+			$myargs2->push($myargs);
+			#/src/englishauction/EnglishAuction.hx:162: characters 4-64
+			$ret = $bus->call("Persistence.Get", $myargs2);
+			#/src/englishauction/EnglishAuction.hx:163: characters 4-59
+			$myresult = MagLevResult::createAsync();
+			#/src/englishauction/EnglishAuction.hx:164: lines 164-166
+			$ret->onError(function ($error) {
+				#/src/englishauction/EnglishAuction.hx:165: characters 5-10
+				throw Exception::thrown($error->getMessage());
+			});
+			#/src/englishauction/EnglishAuction.hx:167: lines 167-187
+			$ret->onResult(function ($res) use (&$myresult) {
+				#/src/englishauction/EnglishAuction.hx:168: characters 5-37
+				$bids = MagLevArray::create();
+				#/src/englishauction/EnglishAuction.hx:169: lines 169-185
+				if (($res instanceof MagLevArray)) {
+					#/src/englishauction/EnglishAuction.hx:170: characters 6-42
+					$resarr = Boot::typedCast(Boot::getClass(MagLevArray::class), $res);
+					#/src/englishauction/EnglishAuction.hx:171: characters 6-16
+					$i = 0;
+					#/src/englishauction/EnglishAuction.hx:172: lines 172-179
+					while ($i < $resarr->size()) {
+						#/src/englishauction/EnglishAuction.hx:173: characters 7-49
+						$row = $resarr->get($i);
+						#/src/englishauction/EnglishAuction.hx:174: characters 7-53
+						$row2 = MagLevObject::create();
+						#/src/englishauction/EnglishAuction.hx:175: characters 7-44
+						$row2->set("userId", $row->get("userId"));
+						#/src/englishauction/EnglishAuction.hx:176: characters 7-42
+						$row2->set("price", $row->get("price"));
+						#/src/englishauction/EnglishAuction.hx:177: characters 7-22
+						$bids->push($row2);
+						#/src/englishauction/EnglishAuction.hx:178: characters 7-10
+						++$i;
+					}
+					#/src/englishauction/EnglishAuction.hx:180: characters 6-30
+					$myresult->setResult($bids);
+				} else {
+					#/src/englishauction/EnglishAuction.hx:183: characters 6-116
+					$error = MagLevError::create(0, "persistence getter did not return array", MagLevNull::create());
+					#/src/englishauction/EnglishAuction.hx:184: characters 6-30
+					$myresult->setError($error);
+				}
+				#/src/englishauction/EnglishAuction.hx:186: characters 5-56
+				return MagLevResult::fromResult(MagLevNull::create());
+			});
+			#/src/englishauction/EnglishAuction.hx:188: characters 4-19
+			return $myresult;
+		}));
+		#/src/englishauction/EnglishAuction.hx:190: lines 190-197
+		$this->maglev->register("EnglishAuction.GetNumberOfBids", MagLevFunction::fromFunction(function ($args) use (&$_gthis) {
+			#/src/englishauction/EnglishAuction.hx:191: characters 4-71
+			$auctionId = (Boot::typedCast(Boot::getClass(MagLevString::class), $args->get(0)))->getString();
+			#/src/englishauction/EnglishAuction.hx:192: characters 4-57
+			$result = MagLevResult::createAsync();
+			#/src/englishauction/EnglishAuction.hx:193: lines 193-195
+			$_gthis->bidRepo->GetNumberOfBids($auctionId, function ($numBids) use (&$result) {
+				#/src/englishauction/EnglishAuction.hx:194: characters 5-52
+				$result->setResult(MagLevNumber::fromInt($numBids));
+			});
+			#/src/englishauction/EnglishAuction.hx:196: characters 4-17
+			return $result;
+		}));
+		#/src/englishauction/EnglishAuction.hx:198: lines 198-212
+		$this->maglev->register("EnglishAuction.GetPriceIncrement", MagLevFunction::fromFunction(function ($args) use (&$_gthis) {
+			#/src/englishauction/EnglishAuction.hx:199: characters 4-71
+			$auctionId = (Boot::typedCast(Boot::getClass(MagLevString::class), $args->get(0)))->getString();
+			#/src/englishauction/EnglishAuction.hx:200: characters 4-57
+			$result = MagLevResult::createAsync();
+			#/src/englishauction/EnglishAuction.hx:201: lines 201-210
+			$_gthis->auctionRepo->FindById($auctionId, function ($auction) use (&$result) {
+				#/src/englishauction/EnglishAuction.hx:202: lines 202-209
+				if ($auction === null) {
+					#/src/englishauction/EnglishAuction.hx:203: characters 6-94
+					$error = MagLevError::create(0, "auction not found", MagLevNull::create());
+					#/src/englishauction/EnglishAuction.hx:204: characters 6-28
+					$result->setError($error);
+				} else {
+					#/src/englishauction/EnglishAuction.hx:206: characters 6-56
+					$priceIncrement = $auction->priceIncrement;
+					#/src/englishauction/EnglishAuction.hx:207: characters 6-55
+					$ret = MagLevNumber::fromFloat($priceIncrement);
+					#/src/englishauction/EnglishAuction.hx:208: characters 6-27
 					$result->setResult($ret);
 				}
 			});
-			#/src/englishauction/EnglishAuction.hx:314: characters 4-17
+			#/src/englishauction/EnglishAuction.hx:211: characters 4-17
 			return $result;
 		}));
-		#/src/englishauction/EnglishAuction.hx:316: lines 316-337
-		$this->maglev->register("EnglishAuction.CalcTimeRemaining", MagLevFunction::fromFunction(function ($args) use (&$_gthis) {
-			#/src/englishauction/EnglishAuction.hx:317: characters 4-71
+		#/src/englishauction/EnglishAuction.hx:213: lines 213-227
+		$this->maglev->register("EnglishAuction.GetPriceIncrement", MagLevFunction::fromFunction(function ($args) use (&$_gthis) {
+			#/src/englishauction/EnglishAuction.hx:214: characters 4-71
 			$auctionId = (Boot::typedCast(Boot::getClass(MagLevString::class), $args->get(0)))->getString();
-			#/src/englishauction/EnglishAuction.hx:318: characters 4-57
+			#/src/englishauction/EnglishAuction.hx:215: characters 4-57
 			$result = MagLevResult::createAsync();
-			#/src/englishauction/EnglishAuction.hx:319: characters 4-48
+			#/src/englishauction/EnglishAuction.hx:216: lines 216-225
+			$_gthis->auctionRepo->FindById($auctionId, function ($auction) use (&$result) {
+				#/src/englishauction/EnglishAuction.hx:217: lines 217-224
+				if ($auction === null) {
+					#/src/englishauction/EnglishAuction.hx:218: characters 6-94
+					$error = MagLevError::create(0, "auction not found", MagLevNull::create());
+					#/src/englishauction/EnglishAuction.hx:219: characters 6-28
+					$result->setError($error);
+				} else {
+					#/src/englishauction/EnglishAuction.hx:221: characters 6-56
+					$priceIncrement = $auction->priceIncrement;
+					#/src/englishauction/EnglishAuction.hx:222: characters 6-55
+					$ret = MagLevNumber::fromFloat($priceIncrement);
+					#/src/englishauction/EnglishAuction.hx:223: characters 6-27
+					$result->setResult($ret);
+				}
+			});
+			#/src/englishauction/EnglishAuction.hx:226: characters 4-17
+			return $result;
+		}));
+		#/src/englishauction/EnglishAuction.hx:228: lines 228-242
+		$this->maglev->register("EnglishAuction.GetReservePrice", MagLevFunction::fromFunction(function ($args) use (&$_gthis) {
+			#/src/englishauction/EnglishAuction.hx:229: characters 4-71
+			$auctionId = (Boot::typedCast(Boot::getClass(MagLevString::class), $args->get(0)))->getString();
+			#/src/englishauction/EnglishAuction.hx:230: characters 4-57
+			$result = MagLevResult::createAsync();
+			#/src/englishauction/EnglishAuction.hx:231: lines 231-240
+			$_gthis->auctionRepo->FindById($auctionId, function ($auction) use (&$result) {
+				#/src/englishauction/EnglishAuction.hx:232: lines 232-239
+				if ($auction === null) {
+					#/src/englishauction/EnglishAuction.hx:233: characters 6-94
+					$error = MagLevError::create(0, "auction not found", MagLevNull::create());
+					#/src/englishauction/EnglishAuction.hx:234: characters 6-28
+					$result->setError($error);
+				} else {
+					#/src/englishauction/EnglishAuction.hx:236: characters 6-52
+					$reservePrice = $auction->reservePrice;
+					#/src/englishauction/EnglishAuction.hx:237: characters 6-53
+					$ret = MagLevNumber::fromFloat($reservePrice);
+					#/src/englishauction/EnglishAuction.hx:238: characters 6-27
+					$result->setResult($ret);
+				}
+			});
+			#/src/englishauction/EnglishAuction.hx:241: characters 4-17
+			return $result;
+		}));
+		#/src/englishauction/EnglishAuction.hx:243: lines 243-257
+		$this->maglev->register("EnglishAuction.GetStartingPrice", MagLevFunction::fromFunction(function ($args) use (&$_gthis) {
+			#/src/englishauction/EnglishAuction.hx:244: characters 4-71
+			$auctionId = (Boot::typedCast(Boot::getClass(MagLevString::class), $args->get(0)))->getString();
+			#/src/englishauction/EnglishAuction.hx:245: characters 4-57
+			$result = MagLevResult::createAsync();
+			#/src/englishauction/EnglishAuction.hx:246: lines 246-255
+			$_gthis->auctionRepo->FindById($auctionId, function ($auction) use (&$result) {
+				#/src/englishauction/EnglishAuction.hx:247: lines 247-254
+				if ($auction === null) {
+					#/src/englishauction/EnglishAuction.hx:248: characters 6-94
+					$error = MagLevError::create(0, "auction not found", MagLevNull::create());
+					#/src/englishauction/EnglishAuction.hx:249: characters 6-28
+					$result->setError($error);
+				} else {
+					#/src/englishauction/EnglishAuction.hx:251: characters 6-54
+					$startingPrice = $auction->startingPrice;
+					#/src/englishauction/EnglishAuction.hx:252: characters 6-54
+					$ret = MagLevNumber::fromFloat($startingPrice);
+					#/src/englishauction/EnglishAuction.hx:253: characters 6-27
+					$result->setResult($ret);
+				}
+			});
+			#/src/englishauction/EnglishAuction.hx:256: characters 4-17
+			return $result;
+		}));
+		#/src/englishauction/EnglishAuction.hx:258: lines 258-282
+		$this->maglev->register("EnglishAuction.CalcMinimumBid", MagLevFunction::fromFunction(function ($args) use (&$_gthis) {
+			#/src/englishauction/EnglishAuction.hx:259: characters 4-71
+			$auctionId = (Boot::typedCast(Boot::getClass(MagLevString::class), $args->get(0)))->getString();
+			#/src/englishauction/EnglishAuction.hx:260: characters 4-57
+			$result = MagLevResult::createAsync();
+			#/src/englishauction/EnglishAuction.hx:261: lines 261-280
+			$_gthis->auctionRepo->FindById($auctionId, function ($auction) use (&$_gthis, &$result, &$auctionId) {
+				#/src/englishauction/EnglishAuction.hx:262: lines 262-279
+				if ($auction === null) {
+					#/src/englishauction/EnglishAuction.hx:263: characters 6-94
+					$error = MagLevError::create(0, "auction not found", MagLevNull::create());
+					#/src/englishauction/EnglishAuction.hx:264: characters 6-28
+					$result->setError($error);
+				} else {
+					#/src/englishauction/EnglishAuction.hx:266: characters 6-31
+					$highestBid = 0;
+					#/src/englishauction/EnglishAuction.hx:267: lines 267-278
+					$_gthis->bidRepo->GetHighestBids($auctionId, 1, function ($bids) use (&$result, &$auction, &$highestBid) {
+						#/src/englishauction/EnglishAuction.hx:268: lines 268-270
+						if ($bids->length > 0) {
+							#/src/englishauction/EnglishAuction.hx:269: characters 8-34
+							$highestBid = ($bids->arr[0] ?? null)->price;
+						}
+						#/src/englishauction/EnglishAuction.hx:272: characters 7-31
+						$minBid = 0.00;
+						#/src/englishauction/EnglishAuction.hx:273: characters 16-69
+						$b = $highestBid + $auction->priceIncrement;
+						$minBid = (is_nan($minBid) || is_nan($b) ? \Math::$NaN : max($minBid, $b));
+						#/src/englishauction/EnglishAuction.hx:274: characters 16-55
+						$b = $auction->startingPrice;
+						$minBid = (is_nan($minBid) || is_nan($b) ? \Math::$NaN : max($minBid, $b));
+						#/src/englishauction/EnglishAuction.hx:276: characters 7-48
+						$ret = MagLevNumber::fromFloat($minBid);
+						#/src/englishauction/EnglishAuction.hx:277: characters 7-28
+						$result->setResult($ret);
+					});
+				}
+			});
+			#/src/englishauction/EnglishAuction.hx:281: characters 4-17
+			return $result;
+		}));
+		#/src/englishauction/EnglishAuction.hx:283: lines 283-304
+		$this->maglev->register("EnglishAuction.CalcTimeRemaining", MagLevFunction::fromFunction(function ($args) use (&$_gthis) {
+			#/src/englishauction/EnglishAuction.hx:284: characters 4-71
+			$auctionId = (Boot::typedCast(Boot::getClass(MagLevString::class), $args->get(0)))->getString();
+			#/src/englishauction/EnglishAuction.hx:285: characters 4-57
+			$result = MagLevResult::createAsync();
+			#/src/englishauction/EnglishAuction.hx:286: characters 4-48
 			$now = (int)(\Date::now()->getTime());
-			#/src/englishauction/EnglishAuction.hx:320: lines 320-322
+			#/src/englishauction/EnglishAuction.hx:287: lines 287-289
 			if ($args->size() > 1) {
-				#/src/englishauction/EnglishAuction.hx:321: characters 5-51
+				#/src/englishauction/EnglishAuction.hx:288: characters 5-51
 				$now = (Boot::typedCast(Boot::getClass(MagLevNumber::class), $args->get(1)))->getInt();
 			}
-			#/src/englishauction/EnglishAuction.hx:323: lines 323-335
+			#/src/englishauction/EnglishAuction.hx:290: lines 290-302
 			$_gthis->auctionRepo->FindById($auctionId, function ($auction) use (&$now, &$result) {
-				#/src/englishauction/EnglishAuction.hx:324: lines 324-334
+				#/src/englishauction/EnglishAuction.hx:291: lines 291-301
 				if ($auction === null) {
-					#/src/englishauction/EnglishAuction.hx:325: characters 6-94
+					#/src/englishauction/EnglishAuction.hx:292: characters 6-94
 					$error = MagLevError::create(0, "auction not found", MagLevNull::create());
-					#/src/englishauction/EnglishAuction.hx:326: characters 6-28
+					#/src/englishauction/EnglishAuction.hx:293: characters 6-28
 					$result->setError($error);
 				} else {
-					#/src/englishauction/EnglishAuction.hx:328: characters 6-57
+					#/src/englishauction/EnglishAuction.hx:295: characters 6-57
 					$timeRemaining = (int)(($auction->end - $now));
-					#/src/englishauction/EnglishAuction.hx:329: lines 329-331
+					#/src/englishauction/EnglishAuction.hx:296: lines 296-298
 					if ($timeRemaining < 0) {
-						#/src/englishauction/EnglishAuction.hx:330: characters 7-24
+						#/src/englishauction/EnglishAuction.hx:297: characters 7-24
 						$timeRemaining = 0;
 					}
-					#/src/englishauction/EnglishAuction.hx:332: characters 6-52
+					#/src/englishauction/EnglishAuction.hx:299: characters 6-52
 					$ret = MagLevNumber::fromInt($timeRemaining);
-					#/src/englishauction/EnglishAuction.hx:333: characters 6-27
+					#/src/englishauction/EnglishAuction.hx:300: characters 6-27
 					$result->setResult($ret);
 				}
 			});
-			#/src/englishauction/EnglishAuction.hx:336: characters 4-17
+			#/src/englishauction/EnglishAuction.hx:303: characters 4-17
 			return $result;
 		}));
-		#/src/englishauction/EnglishAuction.hx:340: lines 340-363
+		#/src/englishauction/EnglishAuction.hx:307: lines 307-330
 		$this->maglev->register("EnglishAuction.GetAuctionsEnding", MagLevFunction::fromFunction(function ($args) use (&$_gthis) {
-			#/src/englishauction/EnglishAuction.hx:341: characters 4-63
+			#/src/englishauction/EnglishAuction.hx:308: characters 4-63
 			$endfrom = (Boot::typedCast(Boot::getClass(MagLevNumber::class), $args->get(0)))->getInt();
-			#/src/englishauction/EnglishAuction.hx:342: characters 4-61
+			#/src/englishauction/EnglishAuction.hx:309: characters 4-61
 			$endto = (Boot::typedCast(Boot::getClass(MagLevNumber::class), $args->get(1)))->getInt();
-			#/src/englishauction/EnglishAuction.hx:343: characters 4-60
+			#/src/englishauction/EnglishAuction.hx:310: characters 4-60
 			$page = (Boot::typedCast(Boot::getClass(MagLevNumber::class), $args->get(2)))->getInt();
-			#/src/englishauction/EnglishAuction.hx:344: characters 4-63
+			#/src/englishauction/EnglishAuction.hx:311: characters 4-63
 			$perpage = (Boot::typedCast(Boot::getClass(MagLevNumber::class), $args->get(3)))->getInt();
-			#/src/englishauction/EnglishAuction.hx:345: characters 4-28
+			#/src/englishauction/EnglishAuction.hx:312: characters 4-28
 			$sort = "end";
-			#/src/englishauction/EnglishAuction.hx:346: characters 4-24
+			#/src/englishauction/EnglishAuction.hx:313: characters 4-24
 			$asc = true;
-			#/src/englishauction/EnglishAuction.hx:347: lines 347-349
+			#/src/englishauction/EnglishAuction.hx:314: lines 314-316
 			if ($args->size() > 4) {
-				#/src/englishauction/EnglishAuction.hx:348: characters 5-55
+				#/src/englishauction/EnglishAuction.hx:315: characters 5-55
 				$sort = (Boot::typedCast(Boot::getClass(MagLevString::class), $args->get(4)))->getString();
 			}
-			#/src/englishauction/EnglishAuction.hx:350: lines 350-352
+			#/src/englishauction/EnglishAuction.hx:317: lines 317-319
 			if ($args->size() > 5) {
-				#/src/englishauction/EnglishAuction.hx:351: characters 5-53
+				#/src/englishauction/EnglishAuction.hx:318: characters 5-53
 				$asc = (Boot::typedCast(Boot::getClass(MagLevBoolean::class), $args->get(5)))->getBool();
 			}
-			#/src/englishauction/EnglishAuction.hx:353: characters 4-57
+			#/src/englishauction/EnglishAuction.hx:320: characters 4-57
 			$result = MagLevResult::createAsync();
-			#/src/englishauction/EnglishAuction.hx:354: lines 354-361
+			#/src/englishauction/EnglishAuction.hx:321: lines 321-328
 			$_gthis->auctionRepo->FindAuctionsEnding($endfrom, $endto, $page, $perpage, $sort, $asc, function ($auctions) use (&$_gthis, &$result) {
-				#/src/englishauction/EnglishAuction.hx:355: characters 5-40
+				#/src/englishauction/EnglishAuction.hx:322: characters 5-40
 				$results = MagLevArray::create();
-				#/src/englishauction/EnglishAuction.hx:356: lines 356-359
+				#/src/englishauction/EnglishAuction.hx:323: lines 323-326
 				$_g = 0;
 				while ($_g < $auctions->length) {
-					#/src/englishauction/EnglishAuction.hx:356: characters 9-16
+					#/src/englishauction/EnglishAuction.hx:323: characters 9-16
 					$auction = ($auctions->arr[$_g] ?? null);
-					#/src/englishauction/EnglishAuction.hx:356: lines 356-359
+					#/src/englishauction/EnglishAuction.hx:323: lines 323-326
 					++$_g;
-					#/src/englishauction/EnglishAuction.hx:357: characters 6-68
+					#/src/englishauction/EnglishAuction.hx:324: characters 6-68
 					$result1 = $_gthis->auctionModelToMagLevObject($auction);
-					#/src/englishauction/EnglishAuction.hx:358: characters 6-26
+					#/src/englishauction/EnglishAuction.hx:325: characters 6-26
 					$results->push($result1);
 				}
-				#/src/englishauction/EnglishAuction.hx:360: characters 5-30
+				#/src/englishauction/EnglishAuction.hx:327: characters 5-30
 				$result->setResult($results);
 			});
-			#/src/englishauction/EnglishAuction.hx:362: characters 4-17
+			#/src/englishauction/EnglishAuction.hx:329: characters 4-17
 			return $result;
 		}));
-		#/src/englishauction/EnglishAuction.hx:364: lines 364-387
+		#/src/englishauction/EnglishAuction.hx:331: lines 331-354
 		$this->maglev->register("EnglishAuction.GetAuctionsStarting", MagLevFunction::fromFunction(function ($args) use (&$_gthis) {
-			#/src/englishauction/EnglishAuction.hx:365: characters 4-63
+			#/src/englishauction/EnglishAuction.hx:332: characters 4-63
 			$endfrom = (Boot::typedCast(Boot::getClass(MagLevNumber::class), $args->get(0)))->getInt();
-			#/src/englishauction/EnglishAuction.hx:366: characters 4-61
+			#/src/englishauction/EnglishAuction.hx:333: characters 4-61
 			$endto = (Boot::typedCast(Boot::getClass(MagLevNumber::class), $args->get(1)))->getInt();
-			#/src/englishauction/EnglishAuction.hx:367: characters 4-60
+			#/src/englishauction/EnglishAuction.hx:334: characters 4-60
 			$page = (Boot::typedCast(Boot::getClass(MagLevNumber::class), $args->get(2)))->getInt();
-			#/src/englishauction/EnglishAuction.hx:368: characters 4-63
+			#/src/englishauction/EnglishAuction.hx:335: characters 4-63
 			$perpage = (Boot::typedCast(Boot::getClass(MagLevNumber::class), $args->get(3)))->getInt();
-			#/src/englishauction/EnglishAuction.hx:369: characters 4-28
+			#/src/englishauction/EnglishAuction.hx:336: characters 4-28
 			$sort = "end";
-			#/src/englishauction/EnglishAuction.hx:370: characters 4-24
+			#/src/englishauction/EnglishAuction.hx:337: characters 4-24
 			$asc = true;
-			#/src/englishauction/EnglishAuction.hx:371: lines 371-373
+			#/src/englishauction/EnglishAuction.hx:338: lines 338-340
 			if ($args->size() > 4) {
-				#/src/englishauction/EnglishAuction.hx:372: characters 5-55
+				#/src/englishauction/EnglishAuction.hx:339: characters 5-55
 				$sort = (Boot::typedCast(Boot::getClass(MagLevString::class), $args->get(4)))->getString();
 			}
-			#/src/englishauction/EnglishAuction.hx:374: lines 374-376
+			#/src/englishauction/EnglishAuction.hx:341: lines 341-343
 			if ($args->size() > 5) {
-				#/src/englishauction/EnglishAuction.hx:375: characters 5-53
+				#/src/englishauction/EnglishAuction.hx:342: characters 5-53
 				$asc = (Boot::typedCast(Boot::getClass(MagLevBoolean::class), $args->get(5)))->getBool();
 			}
-			#/src/englishauction/EnglishAuction.hx:377: characters 4-57
+			#/src/englishauction/EnglishAuction.hx:344: characters 4-57
 			$result = MagLevResult::createAsync();
-			#/src/englishauction/EnglishAuction.hx:378: lines 378-385
+			#/src/englishauction/EnglishAuction.hx:345: lines 345-352
 			$_gthis->auctionRepo->FindAuctionsStarting($endfrom, $endto, $page, $perpage, $sort, $asc, function ($auctions) use (&$_gthis, &$result) {
-				#/src/englishauction/EnglishAuction.hx:379: characters 5-40
+				#/src/englishauction/EnglishAuction.hx:346: characters 5-40
 				$results = MagLevArray::create();
-				#/src/englishauction/EnglishAuction.hx:380: lines 380-383
+				#/src/englishauction/EnglishAuction.hx:347: lines 347-350
 				$_g = 0;
 				while ($_g < $auctions->length) {
-					#/src/englishauction/EnglishAuction.hx:380: characters 9-16
+					#/src/englishauction/EnglishAuction.hx:347: characters 9-16
 					$auction = ($auctions->arr[$_g] ?? null);
-					#/src/englishauction/EnglishAuction.hx:380: lines 380-383
+					#/src/englishauction/EnglishAuction.hx:347: lines 347-350
 					++$_g;
-					#/src/englishauction/EnglishAuction.hx:381: characters 6-68
+					#/src/englishauction/EnglishAuction.hx:348: characters 6-68
 					$result1 = $_gthis->auctionModelToMagLevObject($auction);
-					#/src/englishauction/EnglishAuction.hx:382: characters 6-26
+					#/src/englishauction/EnglishAuction.hx:349: characters 6-26
 					$results->push($result1);
 				}
-				#/src/englishauction/EnglishAuction.hx:384: characters 5-30
+				#/src/englishauction/EnglishAuction.hx:351: characters 5-30
 				$result->setResult($results);
 			});
-			#/src/englishauction/EnglishAuction.hx:386: characters 4-17
+			#/src/englishauction/EnglishAuction.hx:353: characters 4-17
 			return $result;
 		}));
-		#/src/englishauction/EnglishAuction.hx:388: lines 388-409
+		#/src/englishauction/EnglishAuction.hx:355: lines 355-376
 		$this->maglev->register("EnglishAuction.GetOpenAuctions", MagLevFunction::fromFunction(function ($args) use (&$_gthis) {
-			#/src/englishauction/EnglishAuction.hx:389: characters 4-60
+			#/src/englishauction/EnglishAuction.hx:356: characters 4-60
 			$page = (Boot::typedCast(Boot::getClass(MagLevNumber::class), $args->get(0)))->getInt();
-			#/src/englishauction/EnglishAuction.hx:390: characters 4-63
+			#/src/englishauction/EnglishAuction.hx:357: characters 4-63
 			$perpage = (Boot::typedCast(Boot::getClass(MagLevNumber::class), $args->get(1)))->getInt();
-			#/src/englishauction/EnglishAuction.hx:391: characters 4-28
+			#/src/englishauction/EnglishAuction.hx:358: characters 4-28
 			$sort = "end";
-			#/src/englishauction/EnglishAuction.hx:392: characters 4-24
+			#/src/englishauction/EnglishAuction.hx:359: characters 4-24
 			$asc = true;
-			#/src/englishauction/EnglishAuction.hx:393: lines 393-395
+			#/src/englishauction/EnglishAuction.hx:360: lines 360-362
 			if ($args->size() > 2) {
-				#/src/englishauction/EnglishAuction.hx:394: characters 5-55
+				#/src/englishauction/EnglishAuction.hx:361: characters 5-55
 				$sort = (Boot::typedCast(Boot::getClass(MagLevString::class), $args->get(2)))->getString();
 			}
-			#/src/englishauction/EnglishAuction.hx:396: lines 396-398
+			#/src/englishauction/EnglishAuction.hx:363: lines 363-365
 			if ($args->size() > 3) {
-				#/src/englishauction/EnglishAuction.hx:397: characters 5-53
+				#/src/englishauction/EnglishAuction.hx:364: characters 5-53
 				$asc = (Boot::typedCast(Boot::getClass(MagLevBoolean::class), $args->get(3)))->getBool();
 			}
-			#/src/englishauction/EnglishAuction.hx:399: characters 4-57
+			#/src/englishauction/EnglishAuction.hx:366: characters 4-57
 			$result = MagLevResult::createAsync();
-			#/src/englishauction/EnglishAuction.hx:400: lines 400-407
+			#/src/englishauction/EnglishAuction.hx:367: lines 367-374
 			$_gthis->auctionRepo->FindOpenAuctions($page, $perpage, $sort, $asc, function ($auctions) use (&$_gthis, &$result) {
-				#/src/englishauction/EnglishAuction.hx:401: characters 5-40
+				#/src/englishauction/EnglishAuction.hx:368: characters 5-40
 				$results = MagLevArray::create();
-				#/src/englishauction/EnglishAuction.hx:402: lines 402-405
+				#/src/englishauction/EnglishAuction.hx:369: lines 369-372
 				$_g = 0;
 				while ($_g < $auctions->length) {
-					#/src/englishauction/EnglishAuction.hx:402: characters 9-16
+					#/src/englishauction/EnglishAuction.hx:369: characters 9-16
 					$auction = ($auctions->arr[$_g] ?? null);
-					#/src/englishauction/EnglishAuction.hx:402: lines 402-405
+					#/src/englishauction/EnglishAuction.hx:369: lines 369-372
 					++$_g;
-					#/src/englishauction/EnglishAuction.hx:403: characters 6-68
+					#/src/englishauction/EnglishAuction.hx:370: characters 6-68
 					$result1 = $_gthis->auctionModelToMagLevObject($auction);
-					#/src/englishauction/EnglishAuction.hx:404: characters 6-26
+					#/src/englishauction/EnglishAuction.hx:371: characters 6-26
 					$results->push($result1);
 				}
-				#/src/englishauction/EnglishAuction.hx:406: characters 5-30
+				#/src/englishauction/EnglishAuction.hx:373: characters 5-30
 				$result->setResult($results);
 			});
-			#/src/englishauction/EnglishAuction.hx:408: characters 4-17
+			#/src/englishauction/EnglishAuction.hx:375: characters 4-17
 			return $result;
 		}));
 	}

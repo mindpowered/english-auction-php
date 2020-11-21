@@ -9,10 +9,6 @@ use \php\Boot;
 
 class BidModel {
 	/**
-	 * @var float
-	 */
-	public $amount;
-	/**
 	 * @var string
 	 */
 	public $auctionId;
@@ -20,6 +16,10 @@ class BidModel {
 	 * @var string
 	 */
 	public $id;
+	/**
+	 * @var float
+	 */
+	public $price;
 	/**
 	 * @var string
 	 */
