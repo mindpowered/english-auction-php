@@ -4,7 +4,6 @@ namespace mindpowered\englishauction;
 use \maglev\MagLev;
 use \maglev\MagLevPhp;
 use \englishauction\EnglishAuction as EnglishAuction_Library;
-use \persistence\Persistence;
 
 /**
  * Copyright Mind Powered Corporation 2020
@@ -26,7 +25,6 @@ class EnglishAuction
 	function __construct() {
 		$bus = MagLev::getInstance('englishauction');
 		$lib = new EnglishAuction_Library($bus);
-		$persistence = new Persistence($bus);
 	}
 
 	/**
@@ -284,134 +282,6 @@ class EnglishAuction
 		$args = [$page, $perpage, $sort, $asc];
 		$ret = null;
 		$phpbus->call('EnglishAuction.GetOpenAuctions', $args, function($async_ret) use (&$ret) { $retn = $async_ret; });
-		return $ret;
-	}
-
-	/**
-	 * Provide a callback used to store new auctions (eg. in a database) and return the ID of the new auction.
-	 * @param callable $strategyMethod 
-	 * @return string new auction id
-	 */
-	public function SetupNewAuctionQueryCallback($strategyMethod)
-	{
-		$phpbus = MagLevPhp::getInstance('englishauction');
-		$recordType = "EnglishAuction.Auction";
-		$operationName = "CreateNew";
-		$args = [$recordType, $operationName, $strategyMethod];
-		$ret = null;
-		$phpbus->call('Persistence.AddMutator', $args, function($async_ret) use (&$ret){ $ret = $async_ret; });
-		return $ret;
-	}
-
-	/**
-	 * Provide a callback used to retrieve auctions (eg. from a database) by ID
-	 * @param callable $strategyMethod 
-	 * @return object The auction or null
-	 */
-	public function SetupFindAuctionByIdQueryCallback($strategyMethod)
-	{
-		$phpbus = MagLevPhp::getInstance('englishauction');
-		$recordType = "EnglishAuction.Auction";
-		$operationName = "FindById";
-		$args = [$recordType, $operationName, $strategyMethod];
-		$ret = null;
-		$phpbus->call('Persistence.AddGetter', $args, function($async_ret) use (&$ret){ $ret = $async_ret; });
-		return $ret;
-	}
-
-	/**
-	 * Provide a callback used to retrieve auctions (eg. from a database) by their start date/time
-	 * @param callable $strategyMethod 
-	 * @return array A list of auctions
-	 */
-	public function SetupFindAuctionsStartingQueryCallback($strategyMethod)
-	{
-		$phpbus = MagLevPhp::getInstance('englishauction');
-		$recordType = "EnglishAuction.Auction";
-		$operationName = "FindStarting";
-		$args = [$recordType, $operationName, $strategyMethod];
-		$ret = null;
-		$phpbus->call('Persistence.AddGetter', $args, function($async_ret) use (&$ret){ $ret = $async_ret; });
-		return $ret;
-	}
-
-	/**
-	 * Provide a callback used to retrieve auctions (eg. from a database) by their end data/time
-	 * @param callable $strategyMethod 
-	 * @return array A list of auctions
-	 */
-	public function SetupFindAuctionsEndingQueryCallback($strategyMethod)
-	{
-		$phpbus = MagLevPhp::getInstance('englishauction');
-		$recordType = "EnglishAuction.Auction";
-		$operationName = "FindEnding";
-		$args = [$recordType, $operationName, $strategyMethod];
-		$ret = null;
-		$phpbus->call('Persistence.AddGetter', $args, function($async_ret) use (&$ret){ $ret = $async_ret; });
-		return $ret;
-	}
-
-	/**
-	 * Provide a callback used to retrieve open auctions (eg. from a database)
-	 * @param callable $strategyMethod 
-	 * @return array A list of auctions
-	 */
-	public function SetupFindOpenAuctionsQueryCallback($strategyMethod)
-	{
-		$phpbus = MagLevPhp::getInstance('englishauction');
-		$recordType = "EnglishAuction.Auction";
-		$operationName = "FindOpen";
-		$args = [$recordType, $operationName, $strategyMethod];
-		$ret = null;
-		$phpbus->call('Persistence.AddGetter', $args, function($async_ret) use (&$ret){ $ret = $async_ret; });
-		return $ret;
-	}
-
-	/**
-	 * Provide a callback used to count the number of bids for an auction (eg. in a database)
-	 * @param callable $strategyMethod 
-	 * @return float Number of bids
-	 */
-	public function SetupCountBidsQueryCallback($strategyMethod)
-	{
-		$phpbus = MagLevPhp::getInstance('englishauction');
-		$recordType = "EnglishAuction.Bid";
-		$operationName = "CountForAuction";
-		$args = [$recordType, $operationName, $strategyMethod];
-		$ret = null;
-		$phpbus->call('Persistence.AddGetter', $args, function($async_ret) use (&$ret){ $ret = $async_ret; });
-		return $ret;
-	}
-
-	/**
-	 * Provide a callback used to retrieve (eg. from a database) the highest bids for an auction
-	 * @param callable $strategyMethod 
-	 * @return array A list of highest bids
-	 */
-	public function SetupHighestBidsQueryCallback($strategyMethod)
-	{
-		$phpbus = MagLevPhp::getInstance('englishauction');
-		$recordType = "EnglishAuction.Bid";
-		$operationName = "FindByHighestPriceForAuction";
-		$args = [$recordType, $operationName, $strategyMethod];
-		$ret = null;
-		$phpbus->call('Persistence.AddGetter', $args, function($async_ret) use (&$ret){ $ret = $async_ret; });
-		return $ret;
-	}
-
-	/**
-	 * Provide a callback used to store new bids (eg. in a database) and return the ID of the new bid.
-	 * @param callable $strategyMethod 
-	 * @return string New bid id
-	 */
-	public function SetupNewBidQueryCallback($strategyMethod)
-	{
-		$phpbus = MagLevPhp::getInstance('englishauction');
-		$recordType = "EnglishAuction.Bid";
-		$operationName = "New";
-		$args = [$recordType, $operationName, $strategyMethod];
-		$ret = null;
-		$phpbus->call('Persistence.AddGetter', $args, function($async_ret) use (&$ret){ $ret = $async_ret; });
 		return $ret;
 	}
 
