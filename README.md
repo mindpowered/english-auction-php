@@ -10,6 +10,7 @@ Contents
 
 * [Source Code and Documentation](#source-code-and-documentation)
 * [Licensing](#licensing)
+* [About](#about)
 * [Requirements](#requirements)
 * [Installation](#installation)
 * [Usage](#usage)
@@ -21,6 +22,11 @@ Contents
 
 # Licensing
 To obtain a version of this package under the MIT License, follow the instructions to [get a license][purchase]. The MIT License has no restrictions on commercial use and permits reuse within proprietary software.
+
+# About
+An English auction is the most common form of auction. When an auction opens, the price starts low and increases as buyers bid for the item. Live auctions usually end when there is no new highest bid for a period of time. For online auctions, an end time is usually set. To prevent items selling for a loss, sometimes the seller will place a reserve." A reserve is the least amount to sell the item for, although the auction may start at a lower price than this. Another common feature of online auctions is the ability to pay a set price to win and end the auction.
+
+This package aims to provide functionality of online English auctions.
 
 # Requirements
 - php >= 7

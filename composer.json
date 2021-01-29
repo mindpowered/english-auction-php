@@ -1,6 +1,6 @@
 {
     "name": "mindpowered/englishauction",
-    "version": "0.0.62",
+    "version": "0.0.63",
     "description": "Online auctions with ascending price and time limit",
     "license": "CPAL-1.0",
     "autoload": {
